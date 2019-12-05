@@ -1,0 +1,87 @@
+.client-logo {
+	position: relative;
+
+	&-inner {
+		position: relative;
+		padding: 25px 0px;
+		@include border_radius();
+
+		img {
+			vertical-align: top;
+		}
+	}
+
+	&-default {
+		overflow: hidden;
+		min-height: 110px;
+
+		&:hover {
+			img {
+				animation: logoFadeUp $transition_function .5s 1;
+			}
+		}
+	}
+
+	&-overlay {
+
+		.client-logo-img {
+			padding: 0 25px;
+		}
+
+		&:hover {
+			@include animate;
+			@include shape_shadow;
+			border-radius: 3px 3px 0 0;
+			background: #fff;
+
+			.client-logo-details {
+				@include animate;
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	&-details {
+		background: #fff;
+		width: 100%;
+		height: auto;
+		visibility: hidden;
+		margin: 15px 0px 0px 0px;
+		padding: 0 25px 25px;
+		position: absolute;
+		z-index: 100;
+		opacity: 0;
+		border-radius: 0 0 3px 3px;
+		@include shape_shadow;
+
+		p {
+			margin: 0;
+		}
+	}
+
+
+	@keyframes logoFadeUp {
+		0% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(calc(-100% - 25px));
+			opacity: 1;
+		}
+		51% {
+			transform: translateY(calc(-100% - 25px));
+			opacity: 0;
+		}
+		52% {
+			transform: translateY(calc(100% + 25px));
+		}
+		86% {
+			opacity: 1;
+		}
+
+		100% {
+			transform: translateY(0px);
+		}
+	}
+}

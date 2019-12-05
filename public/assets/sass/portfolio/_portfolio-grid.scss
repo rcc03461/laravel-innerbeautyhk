@@ -1,0 +1,377 @@
+.portfolio-grid {
+	margin-top: -15px;
+	margin-left: -15px;
+	margin-right: -15px;
+
+	@include sm_screen() {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}
+
+.portfolio-sorting {
+	width: auto;
+	margin: 20px 0px;
+	vertical-align: middle;
+	text-align: center;
+	@include clearfix();
+
+	&.text-left {
+		text-align: left;
+	}
+
+	&.text-right {
+		text-align: right;
+	}
+
+	li {
+		display: inline-block;
+
+		&:first-child {
+			a {
+				margin-left: 0px;
+			}
+		}
+
+		&:last-child {
+			a {
+				margin-right: 0px;
+			}
+		}
+
+		a {
+			margin: 0px 16px;
+			display: inline-block;
+			font-weight: 500;
+			position: relative;
+			@include animate();
+			font-size: 0.98em;
+
+			@include sm_screen {
+				margin: 0px 25px 0px 0px;
+			}
+
+			.num {
+			    font-size: 10px;
+			    top: -5px;
+			    right: -15px;
+			    text-align: left;
+			    position: absolute;
+			    font-size: 0.7em;
+			}
+
+			.name {
+				position: relative;
+			}
+
+			&.active {
+				color: $color_brand;
+				font-weight: 600;
+			}
+		}
+	}
+
+	@include sm_screen(){
+		padding-right: 0;
+
+		&, &.text-right, 
+		&.text-left {
+			text-align: left;
+		}
+	}
+}
+
+div.portfolio-item-wrap {
+	&.with-padding {
+		padding: 15px;
+	}
+
+	&.post-offset {
+		padding: 0;
+	}
+
+	@include sm_screen {
+		&.with-padding {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+}
+
+.portfolio-item {
+	margin: 0;
+	position: relative;
+	z-index: 1;
+	@include animate();
+	@include border_radius();
+	overflow: hidden;
+
+	a {
+		display: block;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	.image-wrap {
+		width: 100%;
+		min-height: 80px;
+		position: relative;
+		text-align: center;
+		display: block;
+		@include animate();
+
+		img {
+			width: 100%;
+			vertical-align: middle;
+			display: block;
+		}
+	}
+
+	h4.title,
+	.btn-link,
+	.ion,
+	.tag {
+		@include animate();
+	}
+
+	h4.title {
+		font-size: 16px;
+
+		a {
+			color: $color_text;
+		}
+	}
+
+	// Grid type1
+
+	&.grid-1 {
+		.description {
+			z-index: 2;
+			@include animate();
+			padding: 30px;
+		}
+
+		h4.title {
+			font-size: 18px;
+		}
+
+		.tag,
+		h4.title,
+		.btn-link {
+			opacity: 0;
+			transform: translateY(10px);
+			transition-delay: 0s;
+		}
+
+		h4.title {
+			margin: 10px 0px 0px 0px;
+		}
+
+		.tag {
+			@include border_radius();
+		}
+
+		&:after {
+			content: '';
+			background: rgba(#fff, .9);
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			bottom: 0px;
+			right: 0px;
+			z-index: 1;
+			opacity: 0;
+			@include animate(all, .5s, 0s);
+		}
+		
+		&:hover {
+			.description {
+				opacity: 1;
+			}
+
+			.tag,
+			h4.title,
+			.btn-link {
+				opacity: 1;
+				transform: none;
+			}
+
+			.tag {
+				transition-delay: .1s;
+				color: $color_text;
+
+				&:hover {
+					color: #fff;
+				}
+			}
+
+			h4.title {
+				transition-delay: .2s;
+			}
+
+			.btn-link {
+				transition-delay: .3s;
+			}
+
+			&:after {
+				opacity: 1;
+			}
+		}
+
+		// Grid type1 - Hover effect type 2
+
+		&.hover-1 {
+
+		}
+
+		// Grid type1 - Hover effect type 2
+
+		&.hover-2 {
+			.center-aligned {
+				align-items: flex-end;
+				justify-content: flex-start;
+			}
+		}
+
+		&.metro-style {
+			.image-wrap {
+				padding: 50% 0;
+				background-size: cover;
+				background-position: center;
+			}
+		}
+	}
+
+	// Grid type2
+
+	&.grid-2 {
+		.description {
+			background: transparent;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.tag {
+			background: transparent;
+			color: $color_light;
+		}
+
+		&:hover {
+			.image-wrap {
+				opacity: .8;
+				@include animate();
+			}
+		}
+
+		// Grid type2 - Hover effect type 2
+
+		&.hover-2 {
+			.overlay {
+				background: rgba(#fff, .8);
+				width: auto;
+				height: auto;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				opacity: 0;
+				@include animate(all, .5s, 0s);
+
+				.btn-round {
+					transform: translateY(10px);
+					display: inline-block;
+					@include animate();
+				}
+
+				 .ion {
+					width: 42px;
+					height: 42px;
+					line-height: 42px;
+				 }
+
+				.btn-link {
+					transform: translateY(10px);
+					opacity: 0;
+					transition-delay: .2s;
+					background: transparent;
+				}
+			}
+
+			&:hover {
+				.image-wrap {
+					opacity: 1;
+				}
+
+				.overlay {
+					opacity: 1;
+
+					.btn-round,
+					.btn-link {
+						opacity: 1;
+						transform: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.stockie-recent-projects-sc {
+	.pagination {
+		margin: 30px auto;
+	}
+}
+
+.lazy-load {
+	margin: 30px auto;
+	display: block;
+	font-weight: 600;
+	@include animate();
+
+	.btn-round {
+		margin-left: 10px;
+
+		.ion {
+			vertical-align: middle;
+			fill: $color_dark;
+			font-size: 26px;
+		}
+	}
+
+	&.active {
+		.ion:before {
+			animation: mymove 1s linear 0s infinite;
+			box-shadow: none;
+		}
+	}
+
+	&.load-more {
+		padding: 15px 0;
+		cursor: pointer;
+
+		.loading-text {
+			display: none;
+		}
+
+		&.active {
+			.loadmore-text {
+				display: none;
+			}
+			
+			.loading-text {
+				display: inline;
+			}
+		}
+	}
+}
+
+@keyframes mymove {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

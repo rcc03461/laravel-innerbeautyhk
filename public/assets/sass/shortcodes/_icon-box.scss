@@ -1,0 +1,119 @@
+.icon-box {
+	text-align: center;
+	display: block;
+	text-decoration: none;
+
+	&-wrap {
+		margin: 0 0 10px;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: inherit;
+		white-space: nowrap;
+
+		> span {
+			font-size: 45px;	
+		}
+
+		img {
+			height: auto;
+			vertical-align: middle;
+		}
+
+		&[class*="shape-"] {
+			box-sizing: content-box;
+			width: 50px;
+			height: 50px;
+			margin-bottom: 15px;
+			line-height: 50px;
+			font-size: 35px;
+			text-align: center;
+			@include border_radius();
+
+			span {
+				color: inherit;
+
+				&, &:before {
+					vertical-align: 0;
+					line-height: inherit;
+				}
+			}
+
+			img {
+				max-width: 30px;
+				vertical-align: middle;
+				margin-top: -8px;
+			}
+		}
+
+		&.shape-border {
+			border: 2px solid;
+		}
+	}
+
+	&-headline {
+		font-size: 16px;
+		margin: 0;
+		font-weight: 600;
+	}
+
+	&-details {
+		display: block;
+		margin: 0px;
+	}
+
+	&.box-left, 
+	&.box-right {
+		text-align: left;
+		position: relative;
+
+		.icon-box-wrap {
+			padding: 0;
+			min-width: 40px;
+			margin: 0px 0px 15px 0px;
+			float: left;
+		}
+
+		.icon-box-content {
+			padding-left: 60px;
+
+			.with-full {
+				line-height: 40px;
+			}
+		}
+
+		.content-full {
+			display: block;
+			clear: both;
+		}
+	}
+
+	&.box-right {
+		text-align: right;
+
+		.icon-box-headline {
+			text-align: right;
+		}
+
+		.icon-box-wrap {
+			left: auto;
+			right: 0;
+			float: right;
+		}
+	}
+
+	&.box-left {
+		.content-full {
+			padding-left: 0px;
+		}
+	}
+
+	&.full-box {
+		.content-full {
+			padding-left: 0;
+		}
+
+		.btn-brand {
+			margin-left: 0;
+		}
+	}
+}

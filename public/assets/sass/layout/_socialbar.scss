@@ -1,0 +1,175 @@
+.share-bar {
+	position: fixed;
+	bottom: 25px;
+	left: 25px;
+	width: 50px;
+	height: 50px;
+	z-index: 50;
+	cursor: pointer;
+
+	@include tablet_screen() {
+		bottom: 20px;
+		left: 20px;
+	}
+
+	@include sm_screen() {
+		bottom: 15px;
+		left: 15px;
+	}
+
+	.title {
+		height: 100%;
+		width: 100%;
+
+		.ion {
+			font-size: 24px;
+			height: 50px;
+			width: 50px;
+			line-height: 50px;
+			position: relative;
+			z-index: 1;
+			vertical-align: middle;
+			display: block;
+			border-radius: 50%;
+			text-align: center;
+			@include shape_shadow();
+			transform: translateX(0);
+			@include animate();
+
+			@include lg_screen() {
+				background-color: #fff;
+			}
+		}
+
+		.name {
+			height: 50px;
+			line-height: 50px;
+			text-transform: uppercase;
+			width: 100%;
+			position: absolute;
+			word-wrap: normal;
+			text-align: left;
+			bottom: 10px;
+			left: 25px;
+			font-weight: 600;
+			font-size: 0.8em;
+			transform: translate(-50%, -100%) rotate(-90deg);
+			transition: .15s ease-in-out;
+			@include animate();
+
+			@include sm_screen() {
+				display: none;
+			}
+		}
+	}
+
+	.links {
+		background: inherit;
+		border-radius: 20px;
+		text-align: center;
+		background-color: #fff;
+		@include border_radius(25px);
+		left: 25px;
+		position: absolute;
+		bottom: 50px;
+		transform: translate(-50%, 30px);
+		opacity: 0;
+		transition: .2s ease-in-out;
+		visibility: hidden;
+
+		a {
+			color: inherit;
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			border-radius: 50%;
+			text-align: center;
+			display: block;
+
+			&:before {
+				display: none;
+			}
+
+			&:hover {
+				color: $color_brand;
+				background-color: $color_fill_light;
+			}
+		}
+
+		span {
+			font-size: 18px;
+			margin: 0;
+			transition: margin .15s ease-in-out;
+		}
+	}
+
+	@include md_screen() {
+		&.header-6 {
+			left: 275px;
+		}	
+
+		&.header-8 {
+			left: 105px;	
+		}
+	}
+}
+
+.share-bar.active {
+	.links {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(-50%);
+
+		span {
+			margin: 6px 0;
+		}
+	}
+
+	.title {
+		.ion {
+			transform: rotate(-45deg);
+
+			&:after {
+				background: rgba(#000,.04);
+				transform: none;
+			}
+		}
+
+		.name {
+			opacity: 0;
+		}
+	}
+}
+
+/*Social Links*/
+
+.social-bar {
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+	z-index: 10;
+	@include animate();
+
+	@include tablet_screen() {
+		bottom: 20px;
+		right: 20px;	
+	}
+
+	@include sm_screen() {
+		bottom: 15px;
+		right: 15px;
+	}
+	
+	.socialbar.small {
+		a {
+			@include shape_shadow();
+			background-color: #fff;
+			border-color: #fff;
+			color: $color_text;	
+		}
+	}
+}
+
+.social-bar-move {
+	transform: translatex(-65px);
+}

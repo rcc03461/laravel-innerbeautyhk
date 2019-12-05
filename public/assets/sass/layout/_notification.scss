@@ -1,0 +1,57 @@
+.notification-bar {
+	padding: 20px;
+	position: fixed;
+	bottom: 25px;
+	background: $color_green;
+	z-index: 1000;
+	opacity: 0;
+	visibility: hidden;
+	@include animate();
+	@include border_radius();
+	@include shape_shadow();
+	max-width: 760px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	.notification {
+		&-text {
+			font-weight: 500;
+			font-size: 0.82em;
+			margin-bottom: 10px;
+			padding-right: 80px;
+
+			a {
+				font-weight: 600;
+			}
+		}
+
+		&-link {
+			display: inline-block;
+			font-weight: 600;
+
+			a {
+				color: currentColor;
+			}
+		}
+	}
+
+	.close {
+		.ion {
+			top: 20px;
+			right: 20px;
+		}
+	}
+
+	&.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	@include sm_screen {
+		left: 15px;
+		right: 15px;
+		bottom: 15px;
+		max-width: 100%;
+		transform: none;
+	}
+}

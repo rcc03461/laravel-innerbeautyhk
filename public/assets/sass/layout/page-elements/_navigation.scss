@@ -1,0 +1,168 @@
+.postNav {
+	position: relative;
+	width: 100%;
+	padding: 20px 0;
+	background-color: #fff;
+
+	&.border-top {
+		border-top: 1px solid $color_border;
+	}
+
+	&.border-bottom {
+		border-bottom: 1px solid $color_border;
+	}
+
+	&_item {
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		&_arrow {
+
+			&:hover {
+				@include animate();
+			}
+		}
+
+		&_prev {
+			a:first-child {
+				&:before {
+					display: none;
+				}
+			}
+
+			.postNav_item_arrow {
+				margin-right: 15px;
+			}
+		}
+
+		&_next {
+			float: right;
+			text-align: right;
+
+			a:last-child {
+				&:before {
+					display: none;
+				}
+			}
+
+			.postNav_item_arrow {
+				margin-left: 15px;
+			}
+		}
+
+		&_inner {
+
+			&_heading {
+				font-weight: 600;
+				font-size: 16px;
+			}
+
+			&_slug {
+				font-size: 0.75em;
+				font-weight: 600;
+				text-transform: uppercase;
+				color: $color_light;
+			}
+
+			@include sm_screen() {
+
+				& {
+					display: none;
+				}
+			}
+		}
+
+		&:hover {
+
+			color: inherit;
+
+			.postNav_item_inner_heading {
+				@include animate();
+			}
+		}
+	}
+
+	.stockie-icon-grid {
+		background: #fff;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		border-radius: 50%;
+		display: block;
+		text-align: center;
+		position: absolute;
+		top: calc(50% - 25px);
+		left: calc(50% - 25px);
+		z-index: 1;
+		@include shape_shadow();
+
+		&:before {
+			display: none;
+		}
+
+		.btn-round {
+			height: 100%;
+
+			div.ion {
+				box-shadow: none;
+			}
+		}
+
+		.icon {
+			width: 12px;
+			height: 12px;
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				top: calc(50% - 10px);
+				left: calc(50% - 10px);
+				height: 4px;
+			    width: 16px;
+			    background: repeating-linear-gradient(90deg, transparent, transparent 4px, $color_text 4px, $color_text 8px);
+			}
+
+			&:after {
+				top: calc(50%);
+			}
+		}
+
+		&:hover {
+			background: darken($color_fill_light, 1%);
+			@include animate();
+		}
+	}
+}
+
+.onepage-navigation {
+	position: absolute;
+	bottom: 50px;
+	right: 40px;
+	z-index: 3;
+
+	.slider-nav div {
+		position: relative;
+	}
+
+	a {
+		float: left;
+		margin-right: 10px;
+	}
+
+	.stockie-icon-grid .icon {
+		&, &:after {
+			border-color: #fff;
+			border-radius: 0;
+		}
+	}
+
+	@include sm_screen() {
+		bottom: 25px;
+		right: 15px;
+	}
+}

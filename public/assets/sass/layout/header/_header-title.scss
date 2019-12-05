@@ -1,0 +1,149 @@
+.header-title {
+	width: 100%;
+	min-height: 350px;
+	padding: 40px 0px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: $color_fill_light;
+
+	&-content {
+		position: relative;
+		z-index: 2;
+	}
+
+	.bg-image {
+		background-position: center center;	
+		background-size: cover;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+
+	&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+
+	&.without-cap {
+		padding-top: 125px;
+	}
+
+	&.title-full {
+		height: 100vh;
+
+		.title-wrap {
+			height: 100vh;
+		}
+
+		.content {
+			padding-top: 0;
+		}
+	}
+
+	.wrap-container {
+		padding: 0 15px;
+	}
+
+	.tags {
+		width: 100%;
+		display: inline-block;
+		margin-bottom: -10px;
+
+		.tag {
+			margin: 2px 0px;
+			color: #fff;
+			background-color: $color_brand;
+
+			@include sm_screen() {
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	.back-link + .tags {
+		margin-top: 20px;
+	}
+
+	h1.page-title {
+		margin: 10px 0px;
+		max-width: 50%;
+		display: inline-block;
+		text-align: inherit;
+		font-size: 38px;
+		line-height: 1.2;
+
+		@include sm_screen() {
+			margin: 5px 0px;
+		}
+	}
+
+	.subtitle {
+		color: $color_text;
+		text-align: inherit;
+		font-size: 1.05em;
+
+		b:before {
+		    @include divider();
+		}
+	}
+
+	@include tablet_screen {
+		& {
+			min-height: 250px;
+		}
+
+		h1.page-title {
+			font-size: 36px !important;
+			max-width: 80%;
+		}
+	}
+
+	@include sm_screen {
+		&:before {
+			content: '';
+			background-color: #fff;
+			width: 100%;
+			height: 15px;
+			@include border_top_radius(15px);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 2;
+		}
+
+		& {
+			min-height: 180px;
+			margin-bottom: -15px;
+		}
+		
+		.wrap-container {
+			padding: 0px;
+		}
+
+		h1.page-title {
+			font-size: 28px;
+			line-height: 1.2;
+			max-width: 100%;
+		}
+
+		.subtitle {
+			max-width: 100%;
+		}
+
+		&.without-cap {
+			padding-top: 95px;
+			padding-bottom: 50px;
+		}
+	}
+}

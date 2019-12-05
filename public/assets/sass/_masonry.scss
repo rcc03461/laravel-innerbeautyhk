@@ -1,0 +1,16 @@
+.stockie-masonry {
+	@include animate(height, .25s);
+}
+
+.blog-posts-masonry {
+	margin-top: -15px;
+}
+
+// Masonry percentage bug
+div.masonry-block {
+	padding: 15px;
+}
+
+.vc_col-lg-8.masonry-block {
+	width: 66.665%;
+}

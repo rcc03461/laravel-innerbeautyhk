@@ -1,0 +1,132 @@
+.stockie-splitscreen {
+	width: 100%;
+	min-height: 500px;
+	position: relative;
+	z-index: 10;
+	overflow: hidden;
+
+	&.stockie-splitscreen.container-loading {
+		.ms-left, .ms-right {
+			opacity: 0;
+		}
+
+		&.closed {
+			.ms-left, .ms-right {
+				opacity: 1;
+			}	
+		}
+	}
+
+	.ms-section {
+		position: relative;
+		height: 100%;
+		display: flex;
+		justify-content:center;
+		align-items: center;
+		width: 100%;
+
+		&.ms-table {
+
+		}
+
+		.ms-tableCell {
+			width: 100%;
+			height: auto !important;
+			transform: scale(0.5);
+			@include animate(all, 0.5s);
+			opacity: 0;
+		}
+
+		&.active {
+
+			.ms-tableCell {
+				transform: none;
+				opacity: 1;
+			}
+		}
+	}
+
+	.slider-nav {
+		flex-direction: column;
+		bottom: 25px;
+		height: 110px;
+		left: calc(50% - 25px );
+
+		.move-up {
+			@include animate();
+		}
+	}
+
+	.ms-left,
+	.ms-right {
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	.ms-right {
+		left: 50%;
+	}
+
+	.ms-easing {
+		transition: all .6s ease-in-out;
+	}
+
+	&.no-transition .ms-easing {
+		transition: none;
+	}
+
+	.splitscreen-dots {
+		top: 0;
+		//left: calc(0);
+
+		li {
+			a {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+}
+
+#multiscroll-nav {
+	display: none;
+}
+
+@include sm_screen() {
+	.stockie-splitscreen {
+		height: auto !important;
+		overflow: visible;
+		transform: none;
+
+		.ms-left,
+		.ms-right {
+			width: 100%;
+			height: auto;
+			position: static;
+		}
+	}
+
+	.ms-left, 
+	.ms-right {
+		width: 100%;
+		position: static;
+	}
+
+	.ms-section {
+		min-height: 100vw;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+
+		@include sm_screen() {
+			.video-module.preview {
+				float: none;
+			}
+		}
+	}
+}

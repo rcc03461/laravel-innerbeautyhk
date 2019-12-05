@@ -1,0 +1,45 @@
+/*Structure*/
+
+$size_wrapped-container: 1376px;
+$size_offset-fullwidth-container: 5%;
+
+$size_page-offset-top: 80px;
+$size_page-offset-bottom: 90px;
+
+$size_page-offset-top-md: 30px;
+$size_page-offset-bottom-md: 30px;
+
+$transition_function: cubic-bezier(0.4, 0, 0.2, 1);
+
+
+/*Colors*/
+
+$color_brand: #B79B6C;
+$color_dark: #24262b;
+$color_text: lighten($color_dark, 6%);
+$color_light: lighten($color_dark, 30%);
+$color_text_field: rgba($color_dark, .35);
+$color_tag: rgba($color_dark, .05);
+$color_green: #9ff8d0;
+$color_fill_light: #f9f9f9;
+$color_fill_input: #fafafa;
+$color_border: #f0f0f0;
+$color_border_dark: rgba($color_dark, .35);
+
+$color_error: #DE4B53;
+$color_success: #0ebd6e;
+
+/*Typography*/
+
+$font_main: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font_main-size: 15px;
+
+$font_code: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font_pre: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$font_titles: -apple-system, BlinkMacSystemFont, "proxima_nova", Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$font_lh-body: 1.5em;
+$font_lh-titles: 1.5em;
+$font_lh-subtitles: 1.5em;
+$font_lh-text: 1.7;

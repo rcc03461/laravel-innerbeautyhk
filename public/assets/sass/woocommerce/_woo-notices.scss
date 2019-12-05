@@ -1,0 +1,45 @@
+.woo-message-box {
+	position: fixed;
+	bottom: 25px;
+	z-index: 999999;
+	left: 50%;
+	width: auto;
+	margin: 0px auto;
+	@include shape_shadow();
+	transform: translateX(-50%);
+	animation: 0.4s slide_up $transition_function;
+
+	@include sm_screen() {
+		left: 15px;
+		right: 15px;
+		transform: none;
+	}
+}
+
+//Checkout login
+
+.woocommerce-form-login-toggle {
+	.woo-message-box {
+		position: relative;
+		box-shadow: none;
+		animation: initial;
+		transform: none;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		width: 100%;
+		z-index: 0;
+	}
+}
+
+@keyframes slide_up {
+	0% { 
+		transform: translateX(-50%) translateY(100%);
+		opacity: .5;
+	}
+
+	100% { 
+		transform: translateX(-50%) translateY(0%);
+		opacity: 1;
+	}
+}

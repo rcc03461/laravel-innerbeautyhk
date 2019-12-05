@@ -1,0 +1,11 @@
+.heading {
+	.title,
+	.subtitle {
+		margin: 5px 0;
+		font-family: $font_titles;
+	}
+
+	.subtitle + .divider {
+		margin-top: -15px;
+	}
+}

@@ -1,0 +1,38 @@
+.process {
+	position: relative;
+	padding: 1px 0;
+
+	.number {
+		color: $color_border;
+		font-size: 6em;
+		font-weight: 600;
+		position: absolute;
+		line-height: 1;
+		top: 0;
+		left: 0;
+	}
+
+	h3 {
+		margin: 30px 0 40px;
+	}
+
+	.description {
+		margin: 0;
+	}
+
+	&.boxed {
+		background: $color_fill_light;
+		padding: 35px;
+		margin-top: 50px;
+		@include border_radius();
+
+		.number {
+			top: -45px;
+			left: 35px;
+		}
+
+		h3 {
+			margin: 20px 0 10px;
+		}
+	}
+}

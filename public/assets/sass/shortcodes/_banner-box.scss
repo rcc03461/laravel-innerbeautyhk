@@ -1,0 +1,202 @@
+.banner-box {
+	width: 100%;
+
+	.image-wrap {
+		display: block;
+		overflow: hidden;
+		position: relative;
+		@include border_radius();
+		overflow: hidden;
+
+		img {
+			min-width: 100%;
+			float: left;
+			@include animate();
+		}
+
+		.overlay {
+			padding: 25px;
+			opacity: 0;
+			background: rgba($color_dark, .5);
+			@include animate();
+			vertical-align: bottom;
+		}
+
+		.btn {
+			position: relative;
+			top: calc(100% - 25px);
+			@include animate();
+			transform: translateY(50%);
+		}
+	}
+
+	h4 {
+		margin: 20px 0px 0px 0px;
+		font-size: 24px;
+	}
+
+	p {
+		margin-bottom: 0px;
+	}
+
+	&:hover {
+		.image-wrap {
+			img {
+				transform: scale(1.02);
+			}
+
+			.overlay,
+			.btn {
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+
+
+	&.boxed {
+		background: $color_fill_light;
+
+		h4 {
+			margin: 0px;
+		}
+
+		.image-wrap {
+			border-radius: 2px 2px 0px 0px;
+		}
+
+		.content {
+			border: none;
+			padding: 25px;
+		}
+	}
+
+	&.inner {
+		.overlay {
+			background: rgba(#444, .7);
+			opacity: 1;
+			transform: none;
+			padding: 40px;
+
+			@include sm_screen() {
+				padding: 20px;
+			}
+		}
+
+		h4 {
+			margin: 0px;
+			color: #fff;
+		}
+
+		.description {
+			color: #fff;
+		}
+
+		.content {
+			padding-bottom: 10px;
+			border-color: transparent;
+			transition: border .3s ease-in-out;
+		}
+
+		.btn {
+			position: absolute;
+			top: auto;
+			bottom: 35px;
+			transform: none;
+		}
+
+		&.text-center {
+			.btn {
+				left: 50%;
+				transform: translateX(-50%) !important;
+			}
+		}
+
+		&.text-right {
+			.btn {
+				left: auto;
+				right: 30px;
+			}
+		}
+
+		&.hover {
+			.overlay {
+				opacity: 0;
+			}
+
+			h4,
+			.description,
+			.btn {
+				transform: translateY(10px);
+				opacity: 0;
+				@include animate();
+			}
+
+			&:hover {
+				h4,
+				.description,
+				.btn {
+					transform: none;
+					opacity: 1;
+				}
+
+				h4 {
+					transition-delay: .1s;
+				}
+
+				.description {
+					transition-delay: .15s;
+				}
+
+				.btn {
+					transition-delay: .25s;
+				}
+
+				.content {
+					border-color: rgba(#fff,.2);
+					transition-delay: .3s;
+				}
+
+				.overlay {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&.overlay-title {
+		.overlay {
+			opacity: 1;
+			transform: none;
+		}
+
+		h4 {
+			color: #fff;
+			margin: 0px;
+		}
+
+		.title-wrap {
+			width: 100%;
+			transform: translateY(-100%);
+			padding: 25px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 2;
+		}
+
+		.content {
+			padding: 25px;
+			position: relative;
+			border: none;
+
+			p {
+				margin: 0px;
+			}
+		}
+
+		.btn {
+			margin-top: 10px;
+		}
+	}
+}

@@ -1,0 +1,343 @@
+/*--------------------------------------------------------------
+## Stockie logo widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_logo {
+	a {
+		margin: 0;
+		display: inline-block;
+	}	
+
+	h3 {
+		font-size: 1.6em;
+		font-weight: bold;
+		line-height: 30px;
+		color: $color_text;
+	}
+}
+
+
+/*--------------------------------------------------------------
+## Stockie recent posts widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_recent_posts {
+	ul.recent-posts-list {
+		list-style: none;
+		margin: 0;
+
+		li {
+			min-height: 20px;
+			margin-bottom: 15px;
+			position: relative;
+			overflow: hidden;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		img {
+			width: 70px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		h4 {
+			font-weight: 600;
+		}
+
+		.content-wrap {
+			float: left;
+			padding-left: 85px;
+			margin-top: -5px;
+
+			.comments + .author,
+			.date + .categories {
+
+				&:before {
+					content: '•';
+					display: inline-block;
+					vertical-align: middle;
+					color: $color_text;
+					margin-right: 4px;
+				}
+			}
+
+			&.no-thumb {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+## Stockie about author widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_about_author {
+	max-width: 100%;
+	position: relative;
+	@include border_radius();
+	
+	img {
+		width: 70px;
+		height: auto;
+		max-height: 70px;
+		border-radius: 100%;
+		margin-bottom: 10px;
+	}
+
+	.content {
+
+		.info {
+			line-height: 1.7;
+			margin-bottom: 10px;
+
+			&-wrap {
+
+				h4 {
+					font-size: 15px;
+				}
+
+				.site {
+					color: $color_light;
+				}
+			}
+		}
+	}
+
+		
+	.socialbar {
+		margin-top: 15px;
+
+		a {
+			background: #fff;
+			border-color: #fff;
+			color: inherit;
+			@include shape_shadow;
+
+			&:hover {
+				background: darken($color_fill_light, 1%);
+				border-color: darken($color_fill_light, 1%);
+				@include animate;
+			}
+		}
+	}
+}
+/*--------------------------------------------------------------
+## Stockie login widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_login {
+	overflow: hidden;
+
+	.login-wrap {
+		overflow: hidden;
+		position: relative;
+		transition: height .25s ease-in-out;
+	}
+
+	form {
+		overflow: hidden;
+	}
+
+	.login-form {
+		position: relative;
+		left: 0;
+		opacity: 1;
+		transition: opacity .25s ease-in-out;
+		z-index: 2;
+
+		&.hidden {
+			display: block;
+			opacity: 0;
+			position: absolute;
+			z-index: 1;
+		}
+	}
+
+	.reg-form {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: opacity .25s ease-in-out;
+		z-index: 1;
+
+		&.visible {
+			opacity: 1;
+			z-index: 2;
+		}
+	}
+
+	.reg-success {
+		color: #0a6;
+	}
+
+	.login-error,
+	.reg-error {
+		color: #c22;
+	}
+
+	.login-submit {
+		float: left;
+		margin-top: 2px;
+
+		&.with-registration {
+			width: 48%;
+		}
+
+		button {
+			margin-top: 0;
+		}
+	}
+
+	.btn {
+		.text-loading {
+			display: none;
+		}
+
+		&.loading {
+			background: transparent;
+			color: $color_dark;
+			opacity: .6;
+			cursor: default;
+
+			.text-loading {
+				display: block;
+			}
+
+			.text {
+				display: none;
+			}
+		}
+	}
+
+	.login-registration {
+		width: 48%;
+		margin-top: 2px;
+		float: right;
+
+		a {
+			width: 100%;
+
+			&:hover {
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.login-remember {
+		float: left;
+
+		label {
+			cursor: pointer;
+		}
+	}
+
+	.login-lost-password {
+		float: right;
+	}
+
+	.login-remember,
+	.login-lost-password {
+		width: auto;
+	}
+
+	.reg-submit {
+		margin-top: 12px;
+
+		button {
+			margin-top: 0;
+		}
+	}
+
+	.back-to-login {
+		margin-top: 20px;
+	}
+
+	.logged-in {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		opacity: 0;
+		transition: opacity .25s ease-in-out;
+
+		&.visible {
+			position: relative;
+			opacity: 1;
+			z-index: 2;
+			padding: 5px 0px;
+			@include clearfix();
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+## Stockie contact widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_contact {
+	ul.list-box {
+		margin: 0;
+	}
+
+	li {
+		padding: 0px;
+		font-weight: 600;
+		list-style: none;
+		line-height: 2.3;
+
+		&:after {
+			display: none;
+		}
+
+		address {
+			display: inline;
+			font-weight: 400;
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+## Stockie socialbar widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_socialbar_subscribe,
+.widget_stockie_widget_socialbar {
+
+	.socialbar a {
+		background-color: #fff;
+		border-color: #fff;
+		color: inherit;
+		@include shape_shadow();
+
+		&:hover {
+			background: darken($color_fill_light, 2%);
+			border-color: darken($color_fill_light, 2%);
+		}
+	}
+}
+/*--------------------------------------------------------------
+## Stockie subscribe widget
+--------------------------------------------------------------*/
+.widget_stockie_widget_subscribe {
+	.subscribe-form {
+		padding: 0 !important;
+		
+		.btn {
+			right: -2px;
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+## Stockie all widgets
+--------------------------------------------------------------*/
+.widget {
+	a.image {
+		&:before {
+			display: none;
+		}
+	}
+}

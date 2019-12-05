@@ -1,0 +1,118 @@
+.pricing {
+	background: $color_fill_light;
+	width: 100%;
+	padding: 35px;
+	position: relative;
+	display: inline-block;
+	@include border_radius(5px);
+
+	&_title {
+		margin: 10px 0 0 0;
+		font-size: 20px;
+	}
+
+	&_subtitle {
+		margin-top: 5px;
+		font-size: 0.95em;
+	}
+
+	&_price {
+		margin: 15px 0 0;
+		padding: 20px 0;
+		border-top: 1px solid $color_border_dark;
+
+		&_title {
+			display: inline-block;
+			font-size: 42px;
+			line-height: 42px;
+			margin: 0;
+			position: relative;
+			padding-left: 22px;
+
+			.icon {
+				position: absolute;
+				left: 0;
+				line-height: 25px;
+				font-size: 25px;
+			}
+		}
+
+		&_subtitle {
+			margin: 20px 0px 0px 0px;
+			font-size: 13.6px;
+		}
+
+
+		&_time {
+			background: #fff;
+			margin: 10px 0 0;
+		}
+	}
+
+
+	&_list {
+		margin: 0 0;
+		list-style-type: none;
+	}
+
+	&_list + .btn {
+		margin-top: 20px;
+	}
+	
+	.btn {
+		background: $color_dark;
+		border-color: $color_dark;
+	}
+
+	&_list {
+		&_item {
+			padding: 6px 0;
+			font-weight: 600;
+			font-size: 13.6px;
+
+			&, &:first-child {
+				border-color: $color_border;
+			}
+
+			.ion {
+				font-size: 22px;
+				vertical-align: -3px;
+				color: $color_brand;
+
+				& + .title {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+
+	&.features {
+		background: transparent;
+
+		.pricing_title {
+			text-align: left;
+			margin: 0;
+			font-size: 16px;
+		}
+
+		.pricing_list {
+			margin-top: 15px;
+		}
+	}
+
+	&:hover {
+
+
+		.pricing_price_title {
+			color: $color_brand;
+			@include animate();
+		}
+
+		.btn.btn-brand {
+			background: $color_brand;
+			border-color: $color_brand;
+			@include animate();
+		}
+
+	}
+}

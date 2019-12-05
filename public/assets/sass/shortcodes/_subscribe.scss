@@ -1,0 +1,31 @@
+.subscribe-form {
+	width: 100%;
+	position: relative;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+
+	.btn,
+	input[type="submit"] {
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+		white-space: nowrap;
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		@include border_left_radius(0px);
+	}
+
+	@include sm_screen {
+		padding: 0 !important;
+
+		.btn,
+		input[type="submit"] {
+			margin: 15px 0px 0px 0px !important;
+			width: 100%;
+			position: static;
+			right: auto;
+			top: auto;
+			@include border_radius();
+		}
+	}
+}

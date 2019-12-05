@@ -1,0 +1,171 @@
+.contact-form, 
+.subscribe-form,
+.subscribe-widget {
+	[class*="vc_col-lg"] {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	.btn {
+		margin: 15px 0px;
+
+		@include sm_screen() {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	@include sm_screen() {
+		form.wpcf7-form {
+			margin: 0px !important;
+		}
+	}
+
+	input,
+	textarea,
+	.select {
+		font-size: 15px;
+		font-weight: normal;
+		text-transform: none;
+		width: 100%;
+		vertical-align: top;
+	}
+
+	input[type="submit"] {
+		width: auto;
+	}
+
+	br {
+		display: none;
+	}
+
+	p {
+		margin: 0px;
+	}
+
+	.btn-link {
+		padding: 12px 15px;
+	}
+
+	// Error
+	.wpcf7-not-valid {
+		padding-left: 40px;
+	}
+
+	input[type="text"].wpcf7-not-valid,
+	input[type="password"].wpcf7-not-valid,
+	input[type="email"].wpcf7-not-valid,
+	input[type="number"].wpcf7-not-valid,
+	input[type="tel"].wpcf7-not-valid,
+	textarea.wpcf7-not-valid {
+		border-color: $color_error !important;
+	}
+
+	.wpcf7-not-valid-tip {
+		color: $color_error;
+		width: 45px;
+		line-height: 45px;
+		height: 45px;
+		margin: 0px;
+		text-align: center;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		font-size: 0;
+		z-index: 1;
+
+		&:after {
+			content: '\f2bf';
+			font-family: "Ionicons";
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 21px;
+		}
+	}
+
+	.wpcf7-form-control-wrap {
+		display: block;
+	}
+
+	label {
+		.wpcf7-form-control-wrap {
+			margin-top: 3px;
+		}	
+	}
+
+	@include sm_screen() {
+		label {
+			padding: 0px !important;	
+			margin-top: 15px;
+		}
+	}
+
+	div.wpcf7-validation-errors, 
+	div.wpcf7-acceptance-missing,
+	div.wpcf7-response-output {
+		color: $color_error;
+		border: none;
+		@include border_radius();
+		padding: 0px 15px;
+		margin: 10px 0px 0px 0px;
+		text-align: left;
+	}
+
+	div.wpcf7-mail-sent-ok {
+		color: inherit;
+	}
+
+	&.flat {
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="number"],
+		input[type="tel"],
+		textarea { 
+			background-color: darken($color_fill_light, 1%);
+			border-color: darken($color_fill_light, 1%);
+
+			&:hover {
+				background-color: darken($color_fill_light, 3%);
+				border-color: darken($color_fill_light, 3%);
+			}
+
+			&:focus {
+				background-color: $color_fill_light;
+				outline: none;
+			}
+		}
+
+		input[type="text"].wpcf7-not-valid,
+		input[type="password"].wpcf7-not-valid,
+		input[type="email"].wpcf7-not-valid,
+		input[type="number"].wpcf7-not-valid,
+		input[type="tel"].wpcf7-not-valid,
+		textarea.wpcf7-not-valid {
+			border-color: $color_error;
+		}
+	}
+}
+
+.subscribe-widget {
+	div.wpcf7-validation-errors, 
+	div.wpcf7-acceptance-missing,
+	div.wpcf7-response-output {
+		padding: 0px;
+	}	
+}
+
+@include sm_screen() {
+	.contact-form {
+		.btn {
+			margin: 15px 0px 0px 0px !important;
+		}
+	}
+}
+
+.woo-c_checkout_form .validate-required {
+	input.error,
+	.select-styled.error {
+		border: 1px solid $color_error !important;
+	}
+}

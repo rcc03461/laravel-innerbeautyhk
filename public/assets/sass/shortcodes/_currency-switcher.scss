@@ -1,0 +1,99 @@
+.currency_switcher, 
+.widget-woocommerce-currency-switcher {
+	padding: 0px 15px;
+	opacity: 0;
+	@include animate;
+	
+	.dd-select {
+		background: transparent !important;
+	}
+
+	.woocommerce-currency-switcher-form {
+		.dd-selected {
+			padding: 0;
+			font-weight: 500;
+
+			&-text {
+				color: $color_light;
+			}
+		}
+	}
+
+	.dd-pointer-down {
+		&:before {
+			content: "\f3d0";
+			position: absolute;
+			font-family: "Ionicons";
+			top: -8px;
+			@include animate();
+		}
+	}
+
+	.dd-pointer-up {
+		&:before {
+			content: "\f3d0";
+			position: absolute;
+			font-family: "Ionicons";
+			top: -4px;
+			transform: scaleY(-1);
+			@include animate();
+		}
+	}
+
+	ul.dd-options {
+		height: auto;
+		left: 0;
+		min-width: 80px;
+
+		li {
+			width: 100%;
+
+			&:hover {
+				background-color: darken($color_fill_light, 1%);
+				@include animate();
+			}
+		}
+
+		.dd-option {
+			background: transparent;
+			padding: 0;
+
+			&-text {
+				padding: 15px;
+			}
+
+			&:before {
+				content: none;
+			}
+		}
+	}
+
+	.woocommerce-currency-switcher-form {
+		img.dd-option-image,
+		img.dd-selected-image,
+		small.dd-selected-description,
+		small.dd-option-description {
+			display: none;
+		}
+
+		.dd-selected-text,
+		.dd-option-text {
+			cursor: pointer;
+		}
+
+		.dd-pointer,
+		.dd-pointer-down,
+		.dd-pointer-up {
+			right: -10px;
+		}
+
+		.dd-options,
+		.dd-option,
+		.dd-select,
+		.dd-pointer,
+		.dd-pointer-down,
+		.dd-pointer-up{
+			border: none !important;
+		}
+	}
+}

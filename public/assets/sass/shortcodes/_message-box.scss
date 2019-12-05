@@ -1,0 +1,44 @@
+$message-box-colors: (
+	'primary': lighten(#0ebd6e, 40%),
+	'success': lighten(#0ebd6e, 40%),
+	'error': lighten($color_error, 34%),
+	'warning': lighten(#fe8005, 35%)
+);
+
+.message-box {
+	background: $color_fill_light;
+	@include border_radius();
+	margin: 0;
+	padding: 18px 60px 18px 18px;
+	border: none;
+	font-size: 0.95em;
+	text-align: left;
+	position: relative;
+	color: rgba(#000, 0.65);
+
+	&.wauto {
+		width: auto;
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+	&.without-close {
+		padding-right: 20px;
+	}
+
+	&.closed {
+		display: none;
+	}
+
+	a {
+		color: $color_dark;
+		font-weight: 600;
+		margin: 0 5px;
+	}
+
+	@each $class, $color in $message-box-colors {
+		&.#{$class} {
+			background: $color;
+		}
+	}
+}

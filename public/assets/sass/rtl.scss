@@ -1,0 +1,31 @@
+/*
+Theme Name: Stockie
+
+Adding support for language written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+https://codex.wordpress.org/Right_to_Left_Language_Support
+
+*/
+
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+	text-align: right;
+}
+
+.slider .owl-stage {
+    left: 0;
+}
+
+@media screen and (min-width: 1025px) {
+	.stockie-with-header-6 #page {
+	    margin-right: 250px;
+	    margin-left: 0;
+	}
+	.site-header.header-6 .main-nav ul#primary-menu > li > div.sub-nav {
+		left: -100% !important;
+	}
+}
+

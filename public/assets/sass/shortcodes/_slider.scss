@@ -1,0 +1,443 @@
+.slider {
+	width: auto;
+	margin: 0 auto;
+	position: relative;
+	user-select: none;
+
+	> a:not(:nth-child(1)) {
+		display: none;
+	}
+
+	.slider-wrap {
+		position: relative;
+
+		.wpb_content_element {
+			margin: 0;
+		}
+	}
+
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+
+	.owl-stage-outer {
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+		@include animate();
+	}
+
+	.owl-stage {
+		position: absolute;
+	}
+
+	.owl-item {
+		float: left;
+
+		> a:not(:nth-child(1)) {
+			display: block;
+		}
+	}
+
+	.owl-nav {
+		div {
+
+			&.disabled {
+				opacity: 0;
+				cursor: default;
+			}
+		}
+	}
+
+	.owl-prev {
+		left: 0;
+	}
+
+	.owl-next {
+		right: 0;
+	}
+
+	&.with-dots {
+		.owl-dots {
+			margin-top: 40px;
+		}
+	}
+
+	&.without-nav {
+		.slider-nav {
+			display: none;
+		}
+	}
+
+	@include sm_screen() {
+		&.with-dots {
+			.owl-dots {
+				margin-top: 20px;
+			}
+		}
+	}
+}
+
+/*Slider shortcode*/
+
+.slider.stockie-slider {
+	padding: 0 60px;
+
+	.owl-nav {
+		height: 100%;
+		top: 0px;	
+		left: 0px;
+		right: 0px;
+		top: 0px;
+
+		@include sm_screen() {
+			left: 15px;
+			right: 15px;
+		}
+	}
+
+	&.full-height {
+		height: 100%;
+
+		&.with-dots {
+			height: calc(100% - 120px);
+		}
+
+		.owl-stage-outer, .owl-stage, .owl-item,
+		.portfolio-item-wrap {
+			height: 100%;
+		}
+	}
+
+	&.without-nav {
+		padding: 0;
+		
+		.owl-nav,
+		.slider-nav {
+			display: none;
+		}
+	}
+
+	&.nav-offset,
+	&.nav-inset {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+
+	@include md_screen() {
+		&.nav-offset {
+			padding: 0;
+			width: auto;
+
+			> .owl-nav {
+				.owl-prev {
+					left: -60px;
+				}
+
+				.owl-next {
+					right: -60px;
+				}
+			}
+		}
+
+		&.nav-inset {
+			padding: 0;
+			width: auto;
+
+			> .owl-nav {
+				.owl-prev {
+					left: 40px;
+				}
+
+				.owl-next {
+					right: 40px;
+				}
+			}
+		}
+
+		&.slider-offset {
+			width: auto;
+			padding: 0;
+			margin: 0 -70%;
+			//position: static;
+
+			&.slider-opacity {
+				.owl-item {
+					opacity: .5;
+					transition: opacity .1s ease-in-out;
+				}
+
+				.owl-item.offset-active {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	@include note_screen() {
+		&.nav-offset {
+			> .owl-nav {
+				.owl-prev {
+					left: 0px;
+				}
+
+				.owl-next {
+					right: 0px;
+				}
+			}
+		}
+	}
+
+	@include sm_screen() {
+		padding: 0px;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+
+/*Slider product grid*/
+.shop-product-type_4 {
+	.woo-products-slider {
+		> .owl-nav {
+			top: 50%;
+			transform: translateY(-50%);
+			left: 25px;
+			right: 25px;
+			position: absolute;
+			z-index: 0;
+			height: auto;
+
+			.owl-prev,
+			.owl-next {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				margin: 0px;
+			}
+
+			.owl-prev {
+				left: 0px;
+
+				@include sm_screen() {
+					left: 5px;
+				}
+			}
+
+			.owl-next {
+				right: 0px;
+
+				@include sm_screen() {
+					right: 5px;
+				}
+			}
+		}
+	}
+}
+
+/*Navigation buttons*/
+
+.owl-nav,
+.slider-nav {
+	position: absolute;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	.owl-prev,
+	.owl-next,
+	.move-up,
+	.move-down {
+		position: relative;
+
+		.ion {
+			height: 50px;
+			width: 50px;
+			line-height: 50px;
+			background-color: #fff;
+		    @include shape_shadow();
+			border: none;
+			border-radius: 50%;
+			text-align: center;
+			font-size: 22px;
+			position: relative;
+			z-index: 1;
+			transform: none;
+			cursor: pointer;
+		}
+	}
+}
+
+/*Navigation dots*/
+
+.woo_c-product-image-slider,
+.slider,
+.slider-vertical-dots {
+	.owl-dots {
+		width: 100%;
+		text-align: center;
+		margin-top: 0;
+
+		&.slider-vertical-numbers,
+		&.slider-vertical-dots {
+			width: auto;
+		}
+	}
+
+	.owl-dot,
+	.slider-dot {
+		width: 14px;
+		height: 14px;
+		margin: 5px;
+		border-radius: 50px;
+		border: 2px solid transparent;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		opacity: 1;
+		@include animate();
+		color: $color_text;
+
+		&.active {
+			border-color: $color_text;
+
+			&:after {
+				width: 6px;
+				height: 6px;
+				margin: -3px 0 0 -3px;
+			}
+		}
+
+		&:hover {
+			border-color: rgba($color_text, .3);
+		}
+
+		&:after {
+			background: currentColor;
+			content: '';
+			width: 4px;
+			height: 4px;
+			border-radius: 50px;
+			margin: -2px 0 0 -2px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+	}
+}
+
+.slider-vertical-numbers,
+.slider-vertical-dots {
+	width: auto;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	width: 50px;
+	right: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	list-style: none;
+	justify-content: center;
+	z-index: 2;
+	counter-reset: onepage;
+
+	li, > div, > .owl-dot {
+		background: transparent;
+		width: auto;
+		height: auto;
+		padding: 3px 0;
+		color: #fff;
+		font-family: $font_titles;
+		font-weight: 600;
+		font-size: 13px;
+		position: relative;
+		cursor: pointer;
+		counter-increment: onepage;
+		@include animate;
+
+		a {
+			&:before {
+				display: none;
+			}
+		}
+
+		&:after {
+			background: transparent;
+			content: counter(onepage, decimal-leading-zero);
+			position: static;
+		}
+
+		&:before {
+			content: '';
+			background: currentColor;
+			width: 25px;
+			height: 2px;
+			position: absolute;
+			bottom: 50%;
+			right: -40px;
+			display: none;
+			opacity: 0;
+		}
+
+		&.active {
+			font-size: 20px;
+			line-height: 27px;
+
+			&:before {
+				right: -32px;
+			}
+
+			&:after {
+				margin-right: 3px;
+			}
+		}
+
+		&.active,
+		&:hover {
+			background: none;
+			width: auto;
+			height: auto;
+			border-color: transparent;
+			cursor: pointer;
+			transform: none;
+			opacity: 1;
+			
+			&:before {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.slider-vertical-dots {
+
+	li, > div, > .owl-dot {
+		margin: 5px 0;
+		display: block;
+		position: relative;
+		width: 14px;
+		height: 14px;
+
+		&:after {
+			content: '';
+			background: currentColor;
+			position: absolute;
+		}
+
+		&:before {
+			content: none;
+		}
+
+		&:hover, 
+		&.active {
+			border-color: currentColor;
+			width: 14px;
+			height: 14px;
+		}
+	}
+}

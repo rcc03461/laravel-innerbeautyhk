@@ -1,0 +1,24 @@
+.woo-c_wishlist {
+	margin-bottom: 35px;
+	text-align: left;
+
+	.yith-wcwl-share {
+		margin-top: 40px;
+	}
+
+	.socialbar {
+		a {
+			color: #fff;
+
+			&:hover {
+				color: inherit;
+			}
+		}
+	}
+	
+	.dateadded {
+		color: $color_text;
+		font-weight: normal;
+		font-size: 0.95em;
+	}
+}

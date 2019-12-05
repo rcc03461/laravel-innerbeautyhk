@@ -1,0 +1,65 @@
+.stockie-onepage {
+	width: 100%;
+	min-height: 200px;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+
+	div.vc_row.vc_row-flex {
+		display: flex;
+	}
+
+	.slider-nav {
+		flex-direction: column;
+		height: 110px;
+		right: calc(50% - 25px);
+		bottom: 25px;
+		
+		.move-up {
+			@include animate;
+		}
+
+	}
+
+	.onepage-section {
+		background-position: center;
+		background-size: cover;
+		height: 100vh;
+
+		&-inner {
+			transform: scale(0.5);
+			@include animate(all, 0.5s);
+			opacity: 0;
+		}
+
+		&.active {
+			.onepage-section-inner {
+				transform: none;
+				opacity: 1;
+			}
+		}
+	}
+
+	&.horizontal {
+		.onepage-stage {
+			width: 100000px;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+
+			.onepage-section {
+				float: left;
+			}
+		}
+	}
+
+	@include sm_screen() {
+		.onepage-section {
+			padding: 0 25px;
+		}
+
+		.slider-nav {
+			bottom: 15px;
+		}
+	}
+}

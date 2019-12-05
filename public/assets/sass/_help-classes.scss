@@ -1,0 +1,362 @@
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.full-vh {
+	height: 100vh;
+
+	@include sm_screen(){
+		height: auto;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	visibility: visible;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.no-transition {
+	transition: none !important; 
+}
+
+.visible-content {
+	opacity: 1 !important;
+}
+
+.payment-methods {
+	img {
+		width: 34px;
+	    height: auto;
+	    margin: 0px 5px 0px 0px;
+	}
+}
+
+@include tablet_screen {
+	.clb__heading {
+		h1, h2, h3, h4, h5, h6 {
+			&.title {
+				font-size: 34px !important;
+				line-height: 1.15 !important;
+			}
+		}
+
+		& span, &.stockie-dynamic-text-sc {
+			font-size: 34px !important;
+			font-weight: bold !important;
+		}
+	}
+}
+
+@include sm_screen {
+	.clb__heading {
+		h1, h2, h3, h4, h5, h6 {
+			&.title {
+				font-size: 30px !important;
+				line-height: 1.2 !important;
+			}
+		}
+
+		& span, &.stockie-dynamic-text-sc {
+			font-size: 30px !important;
+			font-weight: bold !important;
+		}
+	}
+
+	.clb-column-padding-left {
+		.vc_column-inner {
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+		}
+	}
+
+	.clb__border_reset {
+		.vc_column-inner {
+			border: none !important;
+		}
+	}
+}
+
+.clb__spacer {
+	@include tablet_screen {
+		height: 55px !important;
+	}
+
+	@include sm_screen {
+		height: 40px !important;
+	}
+}
+
+.clb__custom_font {
+	font-family: $font_titles;
+}
+
+.clb__custom_font2 {
+	font-family: $font_main;
+}
+
+// Purchase Button
+
+.btn.purchase-theme {
+	position: fixed;
+	bottom: 25px;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	background: #ecf3e3;
+	border-color: #ecf3e3;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+	border-radius: 4px;
+	color: $color_dark;
+	padding: 0 12px 0 10px;
+	display: flex;
+	align-items: center;
+	height: 56px;
+	line-height: 56px;
+	z-index: 100;
+	animation-delay: 5s;
+	animation-duration: .3s;
+	opacity: 0;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	animation-name: purachse_btn_animation;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	font-family: $font_titles;
+
+	&:hover {
+	    background-color: #8BB654;
+	    border-color: #8BB654;
+	    color: #fff;
+
+	    i.icon {
+		    background-color: rgba(#000, .2);
+		}
+	}
+
+	i.icon {
+	    height: 34px;
+	    width: 34px;
+	    display: flex;
+    	align-items: center;
+    	justify-content: center;
+	    background-color: #8BB654;
+	    border-radius: 50%;
+	    margin: 0px 8px 0px 0px;
+	    @include animate();
+	}
+
+	span {
+	    height: 26px;
+	    width: 1px;
+	    margin: 0px 10px;
+	    background-color: rgba(0, 0, 0, .2);
+	}
+}
+
+@keyframes purachse_btn_animation {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0%);
+    }
+}
+
+#drift-widget {
+    bottom: 12px!important;
+    right: 12px!important;
+}
+/*--------------------------------------------------------------
+## Additional CSS classes for WP (Review Requirments) Gutenberg
+--------------------------------------------------------------*/
+
+.aligncenter {
+	text-align: center;
+}
+
+.wp-block-image .aligncenter,
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+}
+
+.wp-block-image .alignleft,
+.alignleft {
+    float: left;
+    margin-right: 1rem;
+
+    @include lg_screen() {
+	    margin-right: calc(2 * 1rem);
+    }
+}
+
+.wp-block-image .alignright,
+.alignright {
+	float: right;
+    margin-left: 1rem;
+
+    @include lg_screen() {
+	    margin-left: calc(2 * 1rem);
+    }
+}
+
+.wp-caption-text.gallery-caption {
+	white-space: initial;
+}
+
+.wp-block-image {
+	.aligncenter,
+	.alignleft,
+	.alignright {
+		> {
+			figcaption {
+				display: block;
+			}	
+		}
+	}
+}
+
+.wp-caption {
+	max-width: 100%;
+}
+
+.wp-block-quote:not(.is-large):not(.is-style-large) {
+	border-color: $color_border;
+}
+
+.wp-block-quote.is-large, 
+.wp-block-quote.is-style-large {
+	border: none;
+	padding: 0px;
+}
+
+.wp-block-pullquote blockquote {
+	border: none;
+}
+
+.wp-block-file *+.wp-block-file__button {
+	display: table;
+	margin: 20px 0px 0px 0px;
+	color: #fff !important;
+}
+
+.wp-caption-text {
+	padding: 0.5rem;
+    text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Remove WPBakery default row padding
+--------------------------------------------------------------*/
+
+.page-container {
+	.vc_col-has-fill>.vc_column-inner, .vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, 
+	.vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, .vc_row-has-fill>.vc_column_container>.vc_column-inner {
+		padding-top: 0px;
+	}	
+}
+
+select {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+}
+
+/*--------------------------------------------------------------
+## Template classes
+--------------------------------------------------------------*/
+.center-aligned {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+/*--------------------------------------------------------------
+### Brand color classes
+--------------------------------------------------------------*/
+
+$brand__colors: ( 
+	'brand-color': 'color',
+	'brand-border-color': 'border-color',
+	'brand-bg-color': 'background-color'
+);
+
+@each $class, $property in $brand__colors {
+
+	.#{$class},
+	.#{$class}-after:after,
+	.#{$class}-before:before {
+		#{$property}: $color_brand;
+	}
+
+	.#{$class}-hover:hover,
+	.#{$class}-hover-after:after,
+	.#{$class}-hover-before:before {
+		#{$property}: $color_brand;
+	}
+}
+
+.typed-cursor {
+	opacity: 1;
+	margin-right: -0.2em;
+	animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+	50% { opacity: 0.0; }
+}
+
+@-webkit-keyframes typedjsBlink {
+	0% { opacity: 1; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1; }
+}

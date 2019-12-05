@@ -1,0 +1,29 @@
+.cta {
+	background: $color_fill_light;
+	width: 100%;
+	padding: 2.5em;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.subtitle {
+		color: $color_text;
+		font-size: 1em;
+		font-weight: normal;
+	}
+
+	.btn {
+		white-space: nowrap;
+	}
+
+	@include sm_screen() {
+		display: block;
+		padding: 2em;
+
+		.btn {
+			white-space: nowrap;
+			margin-top: 20px;
+		}
+	}
+}
