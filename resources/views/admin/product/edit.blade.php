@@ -3,9 +3,17 @@
 
 
 @section('content')
+
 <div class="page-container type2-left">
 
-
+<?php
+// $temp = [];
+// $temp = [123,432];
+// $product->files->map(function($f){
+//     $temp[] = $f->id;
+// });
+// print_r(json_encode($product_images));
+?>
     <main id="content">
 
 
@@ -26,7 +34,7 @@
                                     <i class="ion-left ion ion-ios-arrow-back"></i>
                                     Back </a>
                             </div>
-                            <h1 class="page-title">Add Product</h1>
+                            <h1 class="page-title">Edit Product</h1>
                         </div>
                     </div>
                 </div> <!-- .header-title -->
@@ -40,9 +48,10 @@
                         <div class="page-content ">
                             <main id="main" class="site-main">
                                 <article class="page type-page status-publish hentry">
-                                    <form class="woocommerce-shipping-calculator" action="{{ route("product.store") }}" method="post">
+                                    <form class="woocommerce-shipping-calculator" action="{{ route("product.update", $product->id) }}" method="post">
                                         @csrf
-                                        @method('POST')
+                                        @method('PUT')
+
 
                                         <div class="vc-row vc-row-flex">
                                             <div id="form" class="vc_col-md-4">
@@ -54,36 +63,34 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- <button>Add Image</button> --}}
                                             </div>
 
                                             <section class="vc_col-md-8 shipping-calculator-form">
 
                                                 <p class="form-row form-row-wide">
-                                                    <input type="text" class="input-text" value="" placeholder="Url" name="url" />
+                                                    <input type="text" class="input-text" value="{{$product->url}}" placeholder="Url" name="url" />
                                                 </p>
 
                                                 <p class="form-row form-row-wide">
-                                                    <textarea class="input-text" placeholder="Excerpt" name="excerpt" cols="30" rows="10"></textarea>
+                                                    <textarea class="input-text" placeholder="Excerpt" name="excerpt" cols="30" rows="10">{{$product->excerpt}}</textarea>
                                                 </p>
 
 
 
                                                 <p class="form-row form-row-wide">
-                                                    <input type="text" class="input-text" value="" placeholder="Title" name="title" />
+                                                    <input type="text" class="input-text" value="{{$product->title}}" placeholder="Title" name="title" />
                                                 </p>
 
                                                 <p class="form-row form-row-wide">
-                                                    <input type="text" class="input-text w-50" value="" placeholder="Price Origin" name="price_origin" />
+                                                    <input type="text" class="input-text w-50" value="{{$product->price_origin}}" placeholder="Price Origin" name="price_origin" />
                                                 </p>
 
                                                 <p class="form-row form-row-wide">
-                                                    <input type="text" class="input-text w-50" value="" placeholder="Price Selling" name="price_selling" />
+                                                    <input type="text" class="input-text w-50" value="{{$product->price_selling}}" placeholder="Price Selling" name="price_selling" />
                                                 </p>
 
                                                 <p class="form-row form-row-wide">
-                                                    <textarea id="editor" name="content"></textarea>
-                                                    {{-- <div id="editor"></div> --}}
+                                                    <textarea id="editor" name="content">{{$product->content}}</textarea>
                                                 </p>
 
                                                 <p>
@@ -110,6 +117,9 @@
 </div>
 </section>
 
+
+
+
 @include('components/footnote')
 
 </main>
@@ -121,9 +131,8 @@
 
 
 @section('script')
+
 <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
-  {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
-  {{-- <script>tinymce.init({selector:'textarea'});</script> --}}
 <!-- Include Editor style. -->
 {{-- <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" /> --}}
 
@@ -161,7 +170,7 @@
         el:"#form",
         data:{
             files:[],
-            product_images:[]
+            product_images:JSON.parse("<?php echo json_encode($product_images); ?>")
         },
         methods:{
             addImage( id ){
@@ -191,8 +200,23 @@
                 console.log(myJson);
             });
 
-            ClassicEditor
-            .create( document.querySelector( '#editor' ) )
+
+            console.log($('meta[name="csrf-token"]').attr('content'));
+
+           ClassicEditor
+            .create( document.querySelector( '#editor' ), {
+                ckfinder: {
+                    uploadUrl: {
+                        url:'/ckUpload',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'XcsrfToken': $('meta[name="csrf-token"]').attr('content')
+                            // Authorization: 'Bearer <JSON Web Token>'
+                        }
+                    },
+                }
+
+            }  )
             .catch( error => {
                 console.error( error );
             } );

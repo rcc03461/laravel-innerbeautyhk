@@ -19,6 +19,28 @@ class CreateFileablesTable extends Migration
             $table->string('fileable_type', 40)->comment('关联模型');
             $table->unsignedInteger('file_id')->comment('标签id');
         });
+
+
+        DB::table('fileables')->insert([
+            [
+                'fileable_id' => 1,
+                'fileable_type' => 'App\Product',
+                'file_id' => 1
+            ],
+            [
+                'fileable_id' => 2,
+                'fileable_type' => 'App\Product',
+                'file_id' => 2
+            ],
+            [
+                'fileable_id' => 3,
+                'fileable_type' => 'App\Product',
+                'file_id' => 3
+            ],
+
+        ]);
+
+
     }
 
     /**

@@ -63,9 +63,13 @@
 
                     <li class="header-cart">
                         <span class="cart-total font-titles">
-                            <a class="cart-customlocation" href="/cart"><span
-                                    class="woocommerce-Price-amount amount">0.00<span
-                                        class="woocommerce-Price-currencySymbol">$</span></span></a>
+                            <a class="cart-customlocation" href="/cart">
+                                <span
+                                    class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">HK$</span>
+                                    @{{totalPrice}}
+                                </span>
+                            </a>
 
 
                         </span>

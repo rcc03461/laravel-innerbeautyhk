@@ -6301,20 +6301,20 @@ section.widget:first-child .widget-title {
     .widget_shopping_cart_content .buttons a.button:hover {
       text-decoration: none;
       opacity: 1 !important; }
-    .widget_shopping_cart_content .buttons a.button:first-child {
-      display: inline-block;
-      width: auto;
-      position: relative;
-      background: transparent;
-      border: none;
-      line-height: 1;
-      padding: 20px 0 10px;
-      color: #24262b;
-      -webkit-box-shadow: none;
-              box-shadow: none; }
-      .widget_shopping_cart_content .buttons a.button:first-child:before {
-        display: block;
-        bottom: 0; }
+    // .widget_shopping_cart_content .buttons a.button:first-child {
+    //   display: inline-block;
+    //   width: auto;
+    //   position: relative;
+    //   background: transparent;
+    //   border: none;
+    //   line-height: 1;
+    //   padding: 20px 0 10px;
+    //   color: #24262b;
+    //   -webkit-box-shadow: none;
+    //           box-shadow: none; }
+    //   .widget_shopping_cart_content .buttons a.button:first-child:before {
+    //     display: block;
+    //     bottom: 0; }
     .widget_shopping_cart_content .buttons a.button:last-child {
       width: 100%;
       color: #fff !important;
@@ -6347,6 +6347,7 @@ section.widget:first-child .widget-title {
   .widget_shopping_cart_content .mini_cart_item-image:before {
     display: none; }
   .widget_shopping_cart_content .mini_cart_item-desc {
+
     width: 100%;
     overflow: hidden;
     padding-right: 10px; }
@@ -7786,6 +7787,7 @@ input, textarea {
   font-style: normal;
   text-align: left; }
 
+select,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -14694,10 +14696,10 @@ body #lang_sel_footer {
 .page-container .vc_row-has-fill + .vc_row > .vc_column_container > .vc_column-inner, .page-container .vc_row-has-fill > .vc_column_container > .vc_column-inner {
   padding-top: 0px; }
 
-select {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute; }
+// select {
+//   opacity: 0;
+//   visibility: hidden;
+//   position: absolute; }
 
 /*--------------------------------------------------------------
 ## Template classes
@@ -15124,6 +15126,9 @@ select {
             -ms-flex-align: center;
                 align-items: center;
         margin-top: 0px; }
+        .woo_c-product .woo_c-product-details-inner a.single_add_to_cart_button{
+            color: #fff;
+        }
       .woo_c-product .woo_c-product-details-inner .single_add_to_cart_button .ion svg,
       .product-popup .woo_c-product-details-inner .single_add_to_cart_button .ion svg {
         fill: #fff;

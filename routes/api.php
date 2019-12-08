@@ -36,7 +36,7 @@ Route::get('/getproduct', function (Request $request) {
     $products = Product::all();
 
     $products->map(function($product){
-        $product->images = $product->files;
+        $product->files;
         return $product;
     });
     // $products->map(function ($item) {

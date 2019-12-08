@@ -16,6 +16,7 @@ use App\Post;
 use App\Product;
 use App\Product_meta;
 use Illuminate\Http\Request;
+// use Auth;
 
 // Route::get('/images', function (Request $request) {
 
@@ -28,7 +29,16 @@ use Illuminate\Http\Request;
 
 //     return $files;
 // });
+// Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+Auth::routes(['register' => false]);
+Route::resource('product', 'ProductController');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return Redirect::to('login');
+});
 Route::get('/', function () {
 
 
@@ -56,18 +66,19 @@ Route::get('/', function () {
 
 });
 
-Route::get('/sync', function () {
+// Route::get('/sync', function () {
 
-    // $product = App\Product::findOrFail(2);
-    // $product->files()->sync([2]);
+//     // $product = App\Product::findOrFail(2);
+//     // $product->files()->sync([2]);
 
-    // return view('pages.add');
-});
+//     // return view('pages.add');
+// });
 
 Route::get('/dropzone', 'fileController@create');
 Route::post('/dropzone', 'fileController@store');
+Route::post('/ckUpload', 'fileController@ckUpload');
 
-Route::resource('product', 'ProductController');
+
 
 // Route::post('/add', function (Request $request) {
 
@@ -108,12 +119,12 @@ Route::get('/cart', function () {
 });
 
 
-Route::resource('post', 'PostController');
+// Route::resource('post', 'PostController');
 Route::get('ckeditor', 'CkeditorController@index');
 Route::post('ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');
 
 
-Route::get('/{product_url}', function ($product_url) {
+Route::get('/p/{product_url}', function ($product_url) {
 
     $product = Product::where('url', $product_url)->first();
 
@@ -131,19 +142,21 @@ Route::get('/{product_url}', function ($product_url) {
 });
 
 
-Route::get('post/{url}', function ($url) {
+// Route::get('post/{url}', function ($url) {
 
-    $post = Post::where('url', $url)->first();
+//     $post = Post::where('url', $url)->first();
 
-    // dd(
-    //     $product
-    // );
-    if ($post) {
-        # code...
-        return view('pages.post')->with('post', $post);
-    }else{
-        return redirect('/');
-    }
+//     // dd(
+//     //     $product
+//     // );
+//     if ($post) {
+//         # code...
+//         return view('pages.post')->with('post', $post);
+//     }else{
+//         return redirect('/');
+//     }
 
 
-});
+// });
+
+

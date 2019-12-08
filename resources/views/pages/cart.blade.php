@@ -55,27 +55,33 @@
 
                                                         <div
                                                             class="woo-c_cart_table cart shop_table shop_table_responsive cart woocommerce-cart-form__contents">
-                                                            <div class="woo-c_cart_table_item">
+
+
+
+
+
+                                                            <div class="woo-c_cart_table_item" v-for="prod,i in cart_products">
 
                                                                 <div class="woo-c_cart_table_item_thumbnail">
-                                                                    <a href="#"><img width="500" height="500"
-                                                                            src="https://colabrio.ams3.cdn.digitaloceanspaces.com/stockie_landing/demo10/2019/03/st__product__47.1-min-500x500.jpg"
+                                                                    <a :href="'/p/'+prod.url">
+                                                                        <img width="500" height="500"
+                                                                            :src="'storage/'+prod.files"
                                                                             class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                                            alt="" /></a>
+                                                                            alt="" />
+                                                                    </a>
                                                                 </div>
 
                                                                 <div class="woo-c_cart_table_details">
                                                                     <div class="woo-c_cart_table_item_name"
                                                                         data-title="Product">
                                                                         <div class="woo-c_product">
-                                                                            <a class="font-titles" href="#">Stainless
-                                                                                steel teapot</a>
+                                                                            <a :href="'/p/'+prod.url">@{{prod.title}}</a>
                                                                             <span class="woo-c_product_category">
                                                                                 <span class="woocs_special_price_code">
                                                                                     <span
-                                                                                        class="woocommerce-Price-amount amount">38.00
-                                                                                        <span
-                                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                                        class="woocommerce-Price-amount amount">
+                                                                                        <span class="woocommerce-Price-currencySymbol">HK&#36;</span>
+                                                                                        @{{prod.price_selling}}
                                                                                     </span>
                                                                                 </span>
                                                                             </span>
@@ -86,34 +92,36 @@
 
                                                                 <div class="woo-c_cart_table_item_colors"></div> --}}
 
-                                                                    {{-- <div class="woo-c_cart_table_item_price price-value" data-title="Price">
+                                                                    <div class="woo-c_cart_table_item_price price-value" data-title="Price">
                                                                     <span class="woocs_special_price_code">
-                                                                        <span class="woocommerce-Price-amount amount">38.00
-                                                                            <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                        <span class="woocommerce-Price-amount amount">
+                                                                            <span class="woocommerce-Price-currencySymbol">HK&#36;</span>
+                                                                            @{{prod.price_selling * prod.qty}}
                                                                         </span>
                                                                     </span>
-                                                                </div> --}}
+                                                                </div>
 
                                                                     <div class="woo-c_cart_table_item_quantity"
                                                                         data-title="Quantity">
                                                                         QTY:<div class="qty_label"></div>&nbsp;
                                                                         <div class="woo-quantity">
-                                                                            <div
+                                                                            <div @click="cartAddQty(prod.id)"
                                                                                 class="plus cart_plus brand-bg-color-hover-before brand-bg-color-hover-after wac-btn-inc">
                                                                             </div>
-                                                                            <div
+                                                                            <div @click="cartMinusQty(prod.id)"
                                                                                 class="minus cart_minus brand-bg-color-hover-before wac-btn-sub">
                                                                             </div>
-                                                                            {{-- <input type="number" id="quantity_5dd01f4c76078"
+                                                                            <input type="number"
                                                                             class="input-text qty text" step="1" min="0"
-                                                                            name="cart[998749ae2645e937d51a544fd23946a6][qty]"
-                                                                            value="1" title="Qty" size="4"
-                                                                            aria-labelledby="Stainless steel teapot quantity" /> --}}
+                                                                            v-model="prod.qty" title="Qty" size="50"
+                                                                            aria-labelledby="Stainless steel teapot quantity" />
 
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="woo-c_cart_table_item_remove">
+                                                                    <div
+                                                                    @click="cartRemove(prod.id)"
+                                                                    class="woo-c_cart_table_item_remove">
                                                                         <a href="#" class="remove-link"
                                                                             title="Remove this item">
                                                                             <i class="ion ion-md-close"></i>
@@ -122,6 +130,12 @@
 
                                                                 </div>
                                                             </div>
+
+
+
+
+
+
                                                         </div>
                                                         <div class="woo-c_actions actions">
                                                             <div class="vc_row">
@@ -163,7 +177,7 @@
                                                             <table
                                                                 class="woo-c_details_table shop_table shop_table_responsive">
 
-                                                                <tr>
+                                                                {{-- <tr>
                                                                     <th class="woo-c_details_table_label">Subtotal</th>
                                                                     <td class="woo-c_details_table_price" id="subtotal"
                                                                         data-title="Subtotal"><span
@@ -171,17 +185,23 @@
                                                                                 class="woocommerce-Price-amount amount">38.00<span
                                                                                     class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
                                                                     </td>
-                                                                </tr>
+                                                                </tr> --}}
 
 
 
                                                                 <tr class="order-total">
                                                                     <th class="woo-c_details_table_label">Total</th>
-                                                                    <td class="woo-c_details_table_price woo-c_details_table_total"
-                                                                        id="total" data-title="Total"><strong><span
-                                                                                class="woocs_special_price_code"><span
-                                                                                    class="woocommerce-Price-amount amount">68.00<span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span></span></span></strong>
+                                                                    <td class="woo-c_details_table_price woo-c_details_table_total text-right"
+                                                                        id="total" data-title="Total">
+                                                                        <strong>
+                                                                            <span
+                                                                                class="woocs_special_price_code">
+                                                                                <span
+                                                                                    class="woocommerce-Price-amount amount">
+                                                                                    <span class="woocommerce-Price-currencySymbol">HK&#36;</span>
+                                                                                    @{{totalPrice}}
+                                                                        </span>
+                                                                    </span></strong>
                                                                     </td>
                                                                 </tr>
 
@@ -190,78 +210,63 @@
                                                                     class="woocommerce-shipping-totals shipping woo-c_details_table_label">
                                                                     <td colspan="2" class="woo-c_details_table_checkbox"
                                                                         data-title="Shipping">
-                                                                        <p class="woo-c_details_table_label">
-                                                                            FREE SHIPPING :
-                                                                        </p>
 
-                                                                        <form class="woocommerce-shipping-calculator"
-                                                                            action="#" method="post">
+<form class="woocommerce-shipping-calculator" action="#" method="post">
+<div class="vc_row woo-c">
 
+    <div class="vc_col-lg-6 vc_col-sm-12 page-offset-top">
+        <p class="woo-c_details_table_label">
+            CONTACT DETAIL :
+        </p>
 
-                                                                            <section class="shipping-calculator-form">
-
-                                                                                <p class="form-row form-row-wide"
-                                                                                    id="calc_shipping_country_field">
-                                                                                    <select name="calc_shipping_country"
-                                                                                        id="calc_shipping_country"
-                                                                                        class="country_to_state country_select"
-                                                                                        rel="calc_shipping_state"
-                                                                                        placeholder="順豐智能櫃">
-                                                                                        <option value="">順豐智能櫃</option>
-                                                                                        <option value="AF">Afghanistan
-                                                                                        </option>
-                                                                                        <option value="AL">Albania
-                                                                                        </option>
-                                                                                        <option value="DZ">Algeria
-                                                                                        </option>
-                                                                                        <option value="AS">American
-                                                                                            Samoa
-                                                                                        </option>
-                                                                                        <option value="AD">Andorra
-                                                                                        </option>
-                                                                                    </select>
-                                                                                </p>
+        <section class="shipping-calculator-form">
 
 
-                                                                                <p class="form-row form-row-wide"
-                                                                                    id="calc_shipping_postcode_field">
-                                                                                    <input type="text"
-                                                                                        class="input-text" value=""
-                                                                                        placeholder="Email"
-                                                                                        name="calc_shipping_postcode"
-                                                                                        id="calc_shipping_postcode" />
-                                                                                </p>
 
-                                                                                <div class="vc_row woo-c">
-                                                                                    <div
-                                                                                        class="vc_col-xs-6 page-offset-top">
-                                                                                        <p class="form-row form-row-wide"
-                                                                                            id="calc_shipping_city_field">
-                                                                                            <input type="text"
-                                                                                                class="input-text"
-                                                                                                value=""
-                                                                                                placeholder="Name"
-                                                                                                name="name"
-                                                                                                id="calc_shipping_city" />
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="vc_col-xs-6 page-offset-top">
-                                                                                        <p class="form-row form-row-wide"
-                                                                                            id="calc_shipping_postcode_field">
-                                                                                            <input type="text"
-                                                                                                class="input-text"
-                                                                                                value=""
-                                                                                                placeholder="Tel"
-                                                                                                name="calc_shipping_postcode"
-                                                                                                id="calc_shipping_postcode" />
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
 
-                                                                            </section>
-                                                                        </form>
+            <p class="form-row form-row-wide">
+                <input type="text" class="input-text" v-model="form.email"placeholder="Email" />
+            </p>
 
+            <div class="vc_row woo-c">
+                <div class="vc_col-xs-6 page-offset-top">
+                    <p class="form-row form-row-wide">
+                        <input type="text" class="input-text" v-model="form.name"placeholder="Name" />
+                    </p>
+                </div>
+                <div class="vc_col-xs-6 page-offset-top">
+                    <p class="form-row form-row-wide">
+                        <input type="text" class="input-text" v-model="form.tel"placeholder="Tel" />
+                    </p>
+                </div>
+            </div>
+
+
+
+        </section>
+    </div>
+    <div class="vc_col-lg-6 vc_col-sm-12 page-offset-top">
+
+        <p class="woo-c_details_table_label">
+            SHIPPING ADDRESS:
+        </p>
+
+            <p class="form-row form-row-wide" id="calc_shipping_country_field">
+                <select v-model="form.address" placeholder="順豐智能櫃">
+                    <option value="">順豐智能櫃</option>
+                    <optgroup v-for="(zone, key) in pickup_address" :label="key">
+                        <option v-for="z in zone" :value="z.code + '-' + z.address">@{{z.code}}-@{{z.address}}</option>
+                    </optgroup>
+                </select>
+            </p>
+    </div>
+
+
+
+
+</div>
+<div>** Please fill the correct contact that we could deliver those products to you ASAP.</div>
+ </form>
                                                                     </td>
                                                                 </tr>
 
@@ -332,20 +337,25 @@
                 payment: function () {
                     // Make a client-side call to the REST api to create the payment
                     // return;
-                    if (app.total == 0 || !app.name || !app.tel || !app.email || !app.address) {
+                    // if (app.total == 0 || !app.name || !app.tel || !app.email || !app.address) {
 
-                        $.confirm({
-                            title: 'Confirm!',
-                            col: 'col-sm-4',
-                            content: '請填入全部資料。',
-                            buttons: {
-                                confirm: function () {
-                                    // $('#first_name').focus();
+                    //     $.confirm({
+                    //         title: 'Confirm!',
+                    //         col: 'col-sm-4',
+                    //         content: '請填入全部資料。',
+                    //         buttons: {
+                    //             confirm: function () {
+                    //                 // $('#first_name').focus();
 
-                                }
-                            }
-                        });
+                    //             }
+                    //         }
+                    //     });
 
+                    //     return false;
+                    // }
+
+                    if (!app.validateForm()) {
+                        alert("請填寫正確資料，以確保我們能盡快將貸品送到你手上。")
                         return false;
                     }
 
@@ -353,20 +363,20 @@
                     return paypal.rest.payment.create(this.props.env, this.props.client, {
                         transactions: [{
                             "amount": {
-                                "total": app.total,
+                                "total": app.totalPrice,
                                 "currency": "HKD",
                                 "details": {
-                                    "subtotal": app.total,
+                                    "subtotal": app.totalPrice,
                                     "tax": "0.00",
                                     "shipping": "20.00",
                                     "shipping_discount": "-20.00"
                                 }
                             },
                             "description": "Thank you! 我們確認訂單後便會立即送貨. 同時請留意您的電郵.",
-                            "custom": app.remark,
+                            // "custom": app.remark,
                             // "invoice_number": "merchant invoice",
                             "item_list": {
-                                "items": app.items
+                                "items": app.item_list
                                 // [{
                                 //     "name": "Inner感3支裝",
                                 //     "description": $("#quantity option:selected").text(),
@@ -401,10 +411,10 @@
                         //     'Payment Complete! <br>Thank you! 我們確認訂單後便會立即送貨. 同時請留意您的電郵.<br><a href="https://api.whatsapp.com/send?phone=+85263311525&text="><img src="images/notifyme.png"></a>';
 
 
-                        let d = new Date()
-                        let uuid = 'Paypal-' + d.getYear() + d.getMonth() + '-' + app.uuid;
+                        // let d = new Date()
+                        // let uuid = 'Paypal-' + d.getYear() + d.getMonth() + '-' + app.uuid;
 
-                        app.log('A new Transation Complete' + uuid);
+                        // app.log('A new Transation Complete' + uuid);
 
 
                     });
@@ -465,108 +475,6 @@
     };
 
 
-    handleCustomSelect();
-
-    function handleCustomSelect(select) {
-        /* ##Custom select */
-
-        if (select === undefined) {
-            select = $('select');
-        }
-
-        select.each(function () {
-            if (select.hasClass('wpml-ls')) {
-                $(this).addClass('select select-dropdown');
-                var selectedLang = $(this).find(
-                    '> ul:not(.wpml-ls-sub-menu) .wpml-ls-item .wpml-ls-item-toggle');
-                var selectSubMenu = $(this).find('.wpml-ls-sub-menu');
-                selectedLang.addClass('select-styled')
-                selectSubMenu.addClass('select-options');
-            } else {
-                var $this = $(this),
-                    numberOfOptions = $(this).children('option').length;
-
-                $this.addClass('select-hidden');
-                $this.wrap('<div class="select"></div>');
-                $this.after('<div class="select-styled"></div>');
-
-                var $styledSelect = $this.next('div.select-styled');
-                $styledSelect.text($this.children('option').eq(0).text());
-                if ($this.children('option:selected').length > 0) {
-                    $styledSelect.text($this.children('option:selected').text());
-                }
-
-                var $list = $('<ul />', {
-                    'class': 'select-options'
-                }).insertAfter($styledSelect);
-
-                for (var i = 0; i < numberOfOptions; i++) {
-                    $('<li />', {
-                        text: $this.children('option').eq(i).text(),
-                        rel: $this.children('option').eq(i).val()
-                    }).appendTo($list);
-                }
-
-                var $listItems = $list.children('li');
-
-                var event = Clb.isPad ? 'touchend' : 'click';
-
-                $styledSelect.on('click', function (e) {
-                    e.stopPropagation();
-                    $('.select').removeAttr('style');
-                    $('div.select-styled.active').not(this).each(function () {
-                        $(this).removeClass('active').next('ul.select-options').hide();
-                    });
-                    $(this).toggleClass('active').next('ul.select-options').toggle();
-                    $(this).parents('.select').css('z-index', '11');
-                });
-
-                var dragging = false;
-                $list.on('touchmove', function () {
-                    dragging = true;
-                });
-
-                $listItems.on(event, function (e) {
-                    if (dragging) {
-                        dragging = false;
-                        return;
-                    }
-                    e.stopPropagation();
-
-                    $styledSelect.text($(this).text()).removeClass('active');
-                    $this.val($(this).attr('rel'));
-                    $this.trigger('change');
-                    $list.hide();
-                });
-
-                if (!Clb.isPad) {
-                    $(document).on(event, function (e) {
-                        if (!$(e.target).hasClass('select-hidden')) {
-                            $this.find(".select-options").hide();
-                            $styledSelect.removeClass('active');
-                        }
-                    });
-                }
-            }
-        });
-
-        var languageSelect = $(".lang-dropdown .select-styled");
-        languageSelect.each(function () {
-            var self = $(this);
-
-            $(this).on("click", function () {
-                $(this).siblings(".select-options").show();
-            });
-
-            $(document).on('mouseup touchend', function (e) {
-                if (!$(e.target).parents().hasClass('select-options')) {
-                    $(".select-options").hide();
-                } else {
-                    $(".select-options").fadeOut();
-                }
-            });
-        });
-    }
 
 </script>
 @endsection

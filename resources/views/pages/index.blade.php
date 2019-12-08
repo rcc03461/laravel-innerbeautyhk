@@ -12,7 +12,7 @@
             @include('components/menu')
 
 
-            <section>
+            <section style="padding-top:2em">
                 <div class="page-container">
                     <div id="primary" class="content-area">
 
@@ -31,23 +31,22 @@
                                                         <div class="simple" id="stockie-shop-grid-5dcd73f1ac850">
                                                             <div class="site-container">
 
-                                                                <div
-                                                                    class="woocommerce woo-shop-container bottom-offset product shop-product-type_1">
+                                                                <div class="woocommerce woo-shop-container bottom-offset product shop-product-type_1">
                                                                     <div
                                                                         class="page-content columns-4 columns-md-4 columns-sm-2">
+
                                                                         <div class="product-filter">
                                                                             <div class="woocommerce-notices-wrapper">
                                                                             </div>
                                                                         </div>
+
                                                                         <div>
                                                                             <ul class="woo_c-products woo-products-slider"
                                                                                 data-shop-masonry="&quot;true&quot;"
                                                                                 data-lazy-container="true">
 
-
                                                                                 @foreach ($products as $product)
     {{-- <p>This is user {{ $user->id }}</p> --}}
-
 
                                                                                 <li class=" masonry-block grid-item product type-product status-publish has-post-thumbnail product_cat-livestyle product_tag-shop product_tag-theme product_tag-wordpress instock sale shipping-taxable purchasable product-type-simple"
                                                                                     data-product-item="true"
@@ -72,7 +71,7 @@
                                                                                             <div
                                                                                                 class="slider slider-images visible">
                                                                                                 @foreach ($product->files as $image)
-                                                                                                <a href="{{ $product->url }}"
+                                                                                                <a href="/p/{{ $product->url }}"
                                                                                                     class="remove_underline">
                                                                                                     <img width="500"
                                                                                                         height="500"
@@ -80,7 +79,7 @@
                                                                                                         src="{{ asset('storage/'.$image->path) }}"
                                                                                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">
                                                                                                 </a>
-                                                                                                <a href="{{ $product->url }}"
+                                                                                                <a href="/p/{{ $product->url }}"
                                                                                                     class="remove_underline">
                                                                                                     <img width="500"
                                                                                                         height="500"
@@ -106,22 +105,22 @@
                                                                                         <div
                                                                                             class="wc-product-title-wrap">
                                                                                             <h5 class="font-titles">
-                                                                                                <a href="/{{ $product->url }}" class="color-dark"> {{ $product->title }} </a>
+                                                                                                <a href="/product/{{ $product->url }}" class="color-dark"> {{ $product->title }} </a>
                                                                                             </h5>
                                                                                             <div
                                                                                                 class="hide-price-and-cart">
                                                                                                 <div class="price">
                                                                                                     <span
                                                                                                         class="woocs_price_code">
-                                                                                                        {{-- <del>
+                                                                                                        <del>
                                                                                                             <span class="woocommerce-Price-currencySymbol">$</span>
                                                                                                             <span class="woocommerce-Price-amount amount">
                                                                                                                 {{ $product->price_origin }}
                                                                                                             </span>
-                                                                                                        </del> --}}
+                                                                                                        </del>
                                                                                                         <ins>
                                                                                                             <span class="woocommerce-Price-amount amount">
-                                                                                                                <span class="woocommerce-Price-currencySymbol">$</span>
+                                                                                                                <span class="woocommerce-Price-currencySymbol">HK$</span>
                                                                                                                 {{ $product->price_selling }}
                                                                                                             </span>
                                                                                                         </ins>
@@ -130,10 +129,12 @@
 
                                                                                                 <div
                                                                                                     class="add-to-cart">
-                                                                                                    <a href="#"
+                                                                                                    <a
+                                                                                                    @click.prevent="addToCart(<?php echo $product->id ?>, productQty)"
+                                                                                                    href="#"
                                                                                                         rel="nofollow"
-                                                                                                        class="add_to_cart_button product_type_simple single_add_to_cart_button btn-loading-disabled ">Add
-                                                                                                        to cart</a>
+                                                                                                        class="add_to_cart_button product_type_simple single_add_to_cart_button btn-loading-disabled ">
+                                                                                                        Add to cart</a>
 
                                                                                                 </div>
                                                                                             </div>

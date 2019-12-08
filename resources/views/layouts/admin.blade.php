@@ -5,11 +5,13 @@
     <title>Inner Beauty HK</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" integrity="sha256-f/v2ew/bb0v4el1ALE7bOoXGUDWGk2k+dkPLo3JPhLw=" crossorigin="anonymous" /> --}}
         <!-- <link rel="stylesheet" href="assets/css/js_composer.min.css"> -->
         <link rel="stylesheet" href="{{ asset('assets/css/grid.min.css') }}">
         <!-- <link rel="stylesheet" href="assets/css/aos.css"> -->
@@ -20,12 +22,28 @@
 </head>
 
 <body>
-    <div id="app">
+
+@if(Auth::check())
+
+
+<div id="app">
+
+        <div class="container">
+            <nav class="nav justify-content-center">
+            <a class="nav-link active" href="/product">Product</a>
+            <a class="nav-link" href="/dropzone">Upload</a>
+            <a class="nav-link" href="/logout">Logout</a>
+            </nav>
+        </div>
+
         @yield('content')
         {{-- @yield('aside') --}}
         @include('components.aside')
     </div>
+@else
 
+
+@endif
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -38,6 +56,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script> --}}
     <script src="{{ asset('/assets/js/libs/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/assets/js/vue.js') }}"></script>
 

@@ -14,25 +14,26 @@
         <div class="widget_shopping_cart_content">
 
             <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                <li class="woocommerce-mini-cart-item mini_cart_item">
-                    <a href="https://stockie.colabr.io/demo10/cart/?remove_item=4aa2bbac27f1625907a53d2933a16e04&amp;_wpnonce=9fc7629d9b"
-                        class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
-                        <a class="mini_cart_item-image" href="https://stockie.colabr.io/demo10/product/gosta-wooden-pencil-2/">
-                            <img src="https://colabrio.ams3.cdn.digitaloceanspaces.com/stockie_landing/demo10/2019/03/st__product__39.1-min-500x500.jpg"
-                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="">
-                        </a>
+                <li class="woocommerce-mini-cart-item mini_cart_item" v-for="prod,i in cart_products">
+                    <a @click="cartRemove(prod.id)" href="#" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                    <a class="mini_cart_item-image" :href="'/p/'+prod.url">
+                        <img :src="'/storage/'+prod.files" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="">
+                    </a>
                     <div class="mini_cart_item-desc">
-                        <a class="font-titles"
-                            href="https://stockie.colabr.io/demo10/product/gosta-wooden-pencil-2/">Gosta
-                            wooden pencil</a> <span class="woo-c_product_category"> <a
+                        <a :href="'/p/'+prod.url">
+                            @{{ prod.title }}
+                        </a>
+                        {{-- <span class="woo-c_product_category"> <a
                                 href="https://stockie.colabr.io/demo10/product-category/livestyle/"
-                                rel="tag">Livestyle</a></span>
+                                rel="tag">Livestyle</a>
+                        </span> --}}
 
                         <span class="quantity">
-                            1 ×
+                            @{{ prod.qty }} ×
                             <span class="woocs_special_price_code">
-                                <span class="woocommerce-Price-amount amount">28.00
-                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">HK$</span>
+                                    @{{ prod.price_selling }}
                                 </span>
                             </span>
                         </span>
@@ -40,14 +41,22 @@
                 </li>
             </ul>
             <div class="woocomerce-mini-cart__container">
-                <p class="woocommerce-mini-cart__total total"><strong>Subtotal:</strong> <span
-                        class="woocs_special_price_code"><span class="woocommerce-Price-amount amount">28.00<span
-                                class="woocommerce-Price-currencySymbol">$</span></span></span></p>
+                <p class="woocommerce-mini-cart__total total">
+                    <strong>Subtotal:</strong>
+                <span
+                        class="woocs_special_price_code">
+                        <span class="woocommerce-Price-amount amount">
+                            <span class="woocommerce-Price-currencySymbol">HK$</span>
+                            @{{totalPrice}}
+                            </span>
+                        </span>
+                </p>
 
 
-                <p class="woocommerce-mini-cart__buttons buttons"><a href="https://stockie.colabr.io/demo10/cart/"
-                        class="button wc-forward">View cart</a><a href="https://stockie.colabr.io/demo10/checkout/"
-                        class="button checkout wc-forward">Checkout</a></p>
+                <p class="woocommerce-mini-cart__buttons buttons">
+                    {{-- <a href="/cart" class="button wc-forward">View cart</a> --}}
+                    <a href="/cart" class="button checkout wc-forward">Checkout</a>
+                </p>
             </div>
 
         </div>

@@ -16,12 +16,12 @@
 
                 <div class="woo_c-product single-product subheader_included spacer_excluded sticky_included ">
 
-                    <div id="product-19083"
-                        class="post-19083 product type-product status-publish has-post-thumbnail product_cat-livestyle product_tag-shop product_tag-theme product_tag-wordpress first instock sale shipping-taxable purchasable product-type-simple">
+                    <div id="product"
+                        class="product type-product status-publish has-post-thumbnail product_cat-livestyle product_tag-shop product_tag-theme product_tag-wordpress first instock sale shipping-taxable purchasable product-type-simple">
 
                         <div class="page-container">
 
-                            <div class="sticky-product">
+                            {{-- <div class="sticky-product">
                                 <div class="sticky-product-img"
                                     style="background-image: url(https://colabrio.ams3.cdn.digitaloceanspaces.com/stockie_landing/demo10/2019/03/st__product__47.1-min-150x150.jpg)">
                                 </div>
@@ -60,7 +60,7 @@
                                         </a>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
 
                             <div class="vc_row">
                                 <div class="vc_col-md-6 vc_col-sm-12 woo_c-product-image">
@@ -239,7 +239,7 @@
 
 
 
-
+@if ($product->content))
                         <div class="woocommerce page-container" style="max-width:800px">
                             <div class="tab" data-stockie-tab-box="true" id="product_review">
                                 <div class="woocommerce-tabs wc-tabs-wrapper tabNav_wrapper">
@@ -265,7 +265,7 @@
                                 </div>
                             </div>
                         </div>
-
+@endif
 
 
 

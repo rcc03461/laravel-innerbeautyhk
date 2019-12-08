@@ -7,6 +7,12 @@ use App\File;
 
 class fileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +30,7 @@ class fileController extends Controller
      */
     public function create()
     {
-        return view('pages.dropzone');
+        return view('admin.dropzone');
     }
 
     /**
@@ -35,6 +41,7 @@ class fileController extends Controller
      */
     public function store(Request $request)
     {
+
         $file = $request->file('file');
 
         $path = $file->storeAs(
@@ -47,6 +54,28 @@ class fileController extends Controller
             "size" => $file->getSize(),
             "ext" => $file->extension(),
             "path" => $path
+        ]);
+    }
+
+    public function ckUpload(Request $request)
+    {
+
+        $file = $request->file('upload');
+
+        $path = $file->storeAs(
+            'public',
+            time() . '.' . $file->extension()
+        );
+        File::create([
+            "name" => $file->getClientOriginalName(),
+            "desc" => "",
+            "size" => $file->getSize(),
+            "ext" => $file->extension(),
+            "path" => $path
+        ]);
+        return response()->json([
+            'uploaded' => 'true',
+            'url' => "/storage/public/" . $path
         ]);
     }
 

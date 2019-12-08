@@ -6,8 +6,13 @@ use App\Product;
 use App\File;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +21,10 @@ class ProductController extends Controller
     public function index()
     {
         //
+        // Auth::logout();
+        // abort(404);
+        $products = Product::all();
+        return view('admin.product.list')->with("products", $products);
     }
 
     /**
@@ -27,7 +36,7 @@ class ProductController extends Controller
     {
         //
 
-        $files = File::all();
+        // $files = File::all();
         return view('admin.product.create');
     }
 
@@ -50,7 +59,7 @@ class ProductController extends Controller
 
         $product->files()->sync($request->input('images'));
         // $product->update($request->all());
-        return redirect()->route('product.create');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -62,6 +71,7 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -73,6 +83,14 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = Product::find($id);
+        // $product_images = Array();
+        // $product->image=[];
+        $product_images = $product->files->map(function($f){
+            return $f->id;
+        });
+        // dd($product);
+        return view('admin.product.edit')->with("product", $product)->with("product_images", $product_images);
     }
 
     /**
@@ -85,6 +103,17 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $product = Product::find($id);
+        $product->url = $request->input('url');
+        $product->title = $request->input('title');
+        $product->excerpt = $request->input('excerpt');
+        $product->content = $request->input('content');
+        $product->price_origin = $request->input('price_origin');
+        $product->price_selling = $request->input('price_selling');
+        $product->save();
+        $product->files()->sync($request->input('images'));
+        // dd($request);
+        return redirect()->route('product.index');
     }
 
     /**
