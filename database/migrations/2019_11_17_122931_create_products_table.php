@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->text('content')->nullable();
             $table->decimal('price_origin', 8, 2);
             $table->decimal('price_selling', 8, 2);
+            $table->tinyInteger('isActive')->default(1);
             $table->timestamps();
         });
 
@@ -34,6 +35,7 @@ class CreateProductsTable extends Migration
                 'content' => '',
                 'price_origin' => 438,
                 'price_selling' => 368,
+                'isActive' => 1,
             ],
             [
                 'url' => 'Multicare-Essential-Gel',
@@ -42,6 +44,7 @@ class CreateProductsTable extends Migration
                 'content' => '',
                 'price_origin' => 388,
                 'price_selling' => 360,
+                'isActive' => 1,
             ],
             [
                 'url' => 'Outclear-Care-Wash-Mousse',
@@ -51,6 +54,7 @@ outclear專用於平衡女性私處酸鹼度（PH4.0-6.5)，改善暗沈色素�
                 'content' => '',
                 'price_origin' => 288,
                 'price_selling' => 248,
+                'isActive' => 1,
             ],
 
         ]);

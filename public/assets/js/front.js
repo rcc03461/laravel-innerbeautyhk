@@ -58,6 +58,31 @@ let app = new Vue({
         }
     },
     methods:{
+        logorder() {
+            let self = this;
+            axios({
+                method: 'post',
+                url: '/api/logorder',
+                data: {
+                    form: self.form,
+                    cart_products: self.cart_products
+                }
+            })
+            .then(function (response) {
+                // console.log(
+                //     response.data
+                // );
+                if (response.data.id > 0) {
+                    location.href = "/thankyou/" + response.data.hash
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+        },
         validateForm() {
             console.log("validateForm");
             if ((this.form.email).trim() == "") {

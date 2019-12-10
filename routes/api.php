@@ -2,7 +2,7 @@
 
 use App\File;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 
 use App\Product;
 use App\Product_meta;
+use App\Invoice;
 
 Route::get('/images', function (Request $request) {
 
@@ -60,6 +61,37 @@ Route::get('/getproduct/{id}', function ($id) {
     // });
 
     return $product;
+});
+
+Route::post('/logorder', function (Request $request) {
+
+    $form = $request->input("form");
+
+    $invoice = Invoice::create([
+        "payby" => "payapl",
+        "name" => $form['name'],
+        "email" => $form['email'],
+        "tel" => $form['tel'],
+        "address" => $form['address'],
+    ]);
+
+    $cart_products = $request->input("cart_products");
+    foreach($cart_products as $key => $value ){
+        // $invoice->products()->attach($value['id'], ['price_sold' => $value['price_celling']]);
+        $invoice->products()->attach($value['id'], ['price_sold' => $value['price_selling']]);
+    }
+
+    $hash = md5($invoice->id . $invoice->created_at);
+    $invoice->hash = $hash;
+    $invoice->save();
+    // // $inv = Invoice::findOrFail(1);
+    // // // $inv->products()->attach(1, ['price_sold' => 100]);
+    // // $inv->products()->sync([
+    // //     1 => ['price_sold' => 100],
+    // //     2 =>  ['price_sold' => 200],
+    // // ]);
+
+    return $invoice;
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

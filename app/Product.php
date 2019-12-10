@@ -16,6 +16,7 @@ class Product extends Model
         'content',
         'price_origin',
         'price_selling',
+        'isActive',
     ];
 
     protected $guarded = array();
