@@ -64,6 +64,7 @@ let app = new Vue({
                 method: 'post',
                 url: '/api/logorder',
                 data: {
+                    total: self.totalPrice,
                     form: self.form,
                     cart_products: self.cart_products
                 }
@@ -73,6 +74,7 @@ let app = new Vue({
                 //     response.data
                 // );
                 if (response.data.id > 0) {
+                    localStorage.removeItem("cart_products");
                     location.href = "/thankyou/" + response.data.hash
                 }
             })
@@ -208,7 +210,7 @@ let app = new Vue({
             // always executed
         });
 
-        axios.get('address.json')
+        axios.get('/address.json')
         .then(function (response) {
             // console.log(
             //     response.data

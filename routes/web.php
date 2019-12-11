@@ -22,14 +22,15 @@ use Illuminate\Http\Request;
 
 Route::get('/thankyou/{hash}', function ($hash) {
 
-    $invoice = Invoice::where("hash", $hash)->with("products")->get();
+    $invoice = Invoice::where("hash", $hash)->with("products")->first();
     // if ($invoice) {
     //     # code...
     //     return view("pages.thankyou")->with("invoice", $invoice);
     // }else{
     //     abort(404);
     // }
-    return $invoice;
+    // return $invoice->products()->with("files");
+    return view("pages.thankyou")->with("invoice", $invoice);
 
 });
 

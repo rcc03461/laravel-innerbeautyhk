@@ -14,6 +14,7 @@ class Invoice extends Model
         "email",
         "tel",
         "address",
+        "total",
         // "ip",
         // "bowser",
     ];
@@ -23,6 +24,7 @@ class Invoice extends Model
     {
         return $this->belongsToMany('App\Product')
             ->withPivot('price_sold')
+            ->withPivot('qty')
             ->withTimestamps();
     }
 

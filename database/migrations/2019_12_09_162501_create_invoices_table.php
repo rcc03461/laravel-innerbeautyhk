@@ -21,6 +21,7 @@ class CreateInvoicesTable extends Migration
             $table->string('email')->nullable();
             $table->string('tel')->nullable();
             $table->string('address')->nullable();
+            $table->decimal('total', 8, 2);
             // $table->string('ip')->nullable();
             // $table->text('bowser')->nullable();
             $table->timestamps();

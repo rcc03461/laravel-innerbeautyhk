@@ -18,6 +18,7 @@ class CreateInvoiceProductTable extends Migration
             $table->integer('invoice_id');
             $table->integer('product_id');
             $table->decimal('price_sold', 8, 2);
+            $table->integer('qty');
             $table->timestamps();
         });
     }

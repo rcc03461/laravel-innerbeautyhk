@@ -287,7 +287,7 @@
                                                             </div> --}}
                                                             <div class="d-flex justify-content-around">
                                                                 <div id="paypal-button-container"></div>
-                                                                <button @click="logorder()">Place Order</button>
+                                                                {{-- <button @click="logorder()">Place Order</button> --}}
                                                             </div>
 
                                                         </div>
@@ -413,7 +413,7 @@
                         // document.querySelector('#paypal-button-container').innerHTML =
                         //     'Payment Complete! <br>Thank you! 我們確認訂單後便會立即送貨. 同時請留意您的電郵.<br><a href="https://api.whatsapp.com/send?phone=+85263311525&text="><img src="images/notifyme.png"></a>';
 
-
+                        app.logorder();
                         // let d = new Date()
                         // let uuid = 'Paypal-' + d.getYear() + d.getMonth() + '-' + app.uuid;
 

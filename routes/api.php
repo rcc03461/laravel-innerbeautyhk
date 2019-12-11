@@ -73,12 +73,13 @@ Route::post('/logorder', function (Request $request) {
         "email" => $form['email'],
         "tel" => $form['tel'],
         "address" => $form['address'],
+        "total" => $request->input("total"),
     ]);
 
     $cart_products = $request->input("cart_products");
     foreach($cart_products as $key => $value ){
         // $invoice->products()->attach($value['id'], ['price_sold' => $value['price_celling']]);
-        $invoice->products()->attach($value['id'], ['price_sold' => $value['price_selling']]);
+        $invoice->products()->attach($value['id'], ['price_sold' => $value['price_selling'], 'qty' => $value['qty']]);
     }
 
     $hash = md5($invoice->id . $invoice->created_at);
